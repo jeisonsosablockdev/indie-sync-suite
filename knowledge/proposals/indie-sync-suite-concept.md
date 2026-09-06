@@ -1,32 +1,27 @@
 ---
 okf_version: "0.1"
 type: Specification
-id: SPEC-ISS-V3
-title: "INDIE-SYNC SUITE: Arquitectura y Especificación Funcional V3"
+id: SPEC-ISS-V3.1
+title: "INDIE-SYNC SUITE: Arquitectura y Especificación Funcional V3.1"
 status: canonical-concept
 owner: "czambrano (jaymusicmachine)"
 created_at: 2026-09-06
 updated_at: 2026-09-06
-tags: [specification, concept, indie-sync-suite, architecture, brand-vault, plane, open-generative-ai, postiz, byok, epics]
+tags: [specification, concept, indie-sync-suite, architecture, tauri, brand-vault, plane, open-generative-ai, postiz, byok, mcp, epics]
 ---
 
-# INDIE-SYNC SUITE: Arquitectura y Especificación Funcional V3
+# INDIE-SYNC SUITE: Arquitectura y Especificación Funcional V3.1
 
-> **Estado**: Documento Canónico de Especificación & Concepto Base  
+> **Estado**: Documento Canónico de Especificación & Concepto Base (Aprobado)  
 > **Propietario / Owner**: Carlos Zambrano (`czambrano` / `jaymusicmachine`)  
-> **Propósito**: Fuente única de verdad funcional y arquitectónica para guiar el diseño de interfaces (UI/UX), la definición de RFCs/Épicas y el plan de implementación técnica.
+> **Cliente de Escritorio**: **Tauri** + **Next.js 16**  
+> **Topología**: Híbrido Pragmático (Desktop Studio Local + Cloud Distribution Hub)
 
 ---
 
 ## 1. Visión General del Sistema
 
-**Indie-Sync Suite** es un sistema operativo integral y modular diseñado para sellos discográficos independientes y creadores musicales. Su propósito es estructurar, automatizar y potenciar:
-- La planificación estratégica de lanzamientos.
-- La consistencia de marca a través del tiempo.
-- La generación de contenido multimedia de alta fidelidad.
-- La distribución multicanal y pauta programática.
-- La analítica unificada de streaming y redes.
-- La toma de decisiones asistida por agentes autónomos de Inteligencia Artificial bajo el modelo **BYOK** (*Bring Your Own Key*).
+**Indie-Sync Suite** es un sistema operativo integral y modular diseñado para sellos discográficos independientes y creadores musicales. Su propósito es estructurar, automatizar y potenciar la planificación estratégica de lanzamientos, la consistencia de marca, la generación de contenido multimedia, la distribución programática, la analítica unificada y la toma de decisiones asistida por agentes autónomos de Inteligencia Artificial (BYOK - Bring Your Own Key).
 
 La plataforma unifica en un solo entorno de trabajo las tareas fragmentadas que actualmente se gestionan mediante herramientas dispersas (hojas de cálculo, tableros genéricos, múltiples generadores de IA y canales de mensajería), proporcionando un flujo continuo y coherente a lo largo de todo el ciclo de vida del lanzamiento musical.
 
@@ -34,13 +29,18 @@ La plataforma unifica en un solo entorno de trabajo las tareas fragmentadas que 
 
 ## 2. Estrategia de Código Abierto e Integración de Ecosistema
 
-Para acelerar el desarrollo sin reinventar la rueda, la suite adopta e integra paradigmas probados de proyectos open-source líderes, adaptándolos a las necesidades particulares de la industria musical:
+Para acelerar el desarrollo sin reinventar la rueda, la suite adopta e integra paradigmas probados de proyectos open-source líderes bajo una **topología híbrida pragmática** (Aplicación de escritorio nativa en **Tauri** para el Sello/Manager + Servicio en la nube para distribución 24/7 y colaboración):
 
 | Base de Referencia / Fork | Módulo en Indie-Sync Suite | Adaptaciones y Responsabilidad Específica |
 | :--- | :--- | :--- |
-| **Plane** (`makeplane/plane`) | **Motor de Planificación y Gestión de Lanzamientos** | Conversión de sprints y epics en fases musicales (Pre-save, Release Day, Post-lanzamiento), gestión de dependencias duras (gatekeepers de máster y pitching) y vistas simplificadas RBAC. |
-| **Open Generative AI** (`anil-matcha/open-generative-ai`) | **Pipeline Creativo Multimedia & Núcleo BYOK** | Bóveda centralizada de credenciales (BYOK), inyección obligatoria del Brand Vault en system prompts, presets de resolución para la industria (1:1 a 3000px, 9:16 Canvas/Reels, 16:9 Banners) y generación en lote. |
-| **Postiz** (`gitroomhq/postiz`) | **Distribución Multicanal & Pauta Programática** | Conexión con la bandeja de creativos aprobados, programación de publicaciones vinculada a hitos del cronograma, ejecución de microcampañas ($20–$100 USD) y lectura de métricas orgánicas/pagas. |
+| [**Plane**](https://github.com/makeplane/plane) (`makeplane/plane`) | **Motor de Planificación y Gestión de Lanzamientos** | Conversión de sprints y epics en fases musicales (Pre-save, Release Day, Post-lanzamiento), gestión de dependencias duras (gatekeepers de máster y pitching) y vistas simplificadas RBAC integradas de forma nativa y ligera en la app de Tauri. |
+| [**Open Generative AI**](https://github.com/anil-matcha/open-generative-ai) (`anil-matcha/open-generative-ai`) | **Pipeline Creativo Multimedia & Núcleo BYOK** | Bóveda centralizada de credenciales (BYOK), inyección obligatoria del Brand Vault en system prompts, presets de resolución para la industria (1:1 a 3000px, 9:16 Canvas/Reels, 16:9 Banners) y generación en lote. |
+| [**Postiz**](https://github.com/gitroomhq/postiz-app) (`gitroomhq/postiz-app`) | **Distribución Multicanal & Pauta Programática** | Conexión con la bandeja de creativos aprobados, programación de publicaciones vinculada a hitos del cronograma, ejecución de microcampañas ($20–$100 USD) y lectura de métricas orgánicas/pagas desde un servicio headless en la nube. |
+
+### Repositorios de Referencia
+- **Plane**: [https://github.com/makeplane/plane](https://github.com/makeplane/plane) — Motor moderno de gestión de proyectos y planificación de tareas (sprints, ciclos y vistas Kanban/Timeline).
+- **Open Generative AI**: [https://github.com/anil-matcha/open-generative-ai](https://github.com/anil-matcha/open-generative-ai) — Pipeline generativo multi-proveedor con integración de modelos de texto, imagen y video bajo enfoque BYOK.
+- **Postiz**: [https://github.com/gitroomhq/postiz-app](https://github.com/gitroomhq/postiz-app) — Plataforma de automatización de programación de contenidos en redes sociales y orquestación de publicaciones.
 
 ---
 
@@ -52,7 +52,7 @@ El sistema implementa una herencia estricta de contexto estructurada en tres niv
 | :---: | :--- | :--- | :--- |
 | **Nivel 1** | **Sello (Label)** | Valores fundacionales, subgéneros principales, directrices de splits/derechos estándar y canales de distribución predeterminados. | Establece políticas de negocio globales y directrices institucionales del catálogo. |
 | **Nivel 2** | **Artista (Artist)** | Biografía, arquetipo de personalidad, tono de voz discursivo, directrices visuales (paletas de color, tipografías, LoRA IDs) y perfiles en redes sociales. | Asegura la coherencia a largo plazo de la identidad del artista a través de múltiples lanzamientos. |
-| **Nivel 3** | **Lanzamiento (Release)** | Concepto narrativo del track/álbum, metadatos (códigos ISRC/UPC), fecha objetivo, presupuesto de pauta y créditos detallados. | Inyecta el contexto específico a las tareas de Plane, los prompts generativos y los copys de publicación en Postiz. |
+| **Nivel 3** | **Lanzamiento (Release)** | Concepto narrativo del track/álbum, metadatos (códigos ISRC/UPC), fecha objetivo, presupuesto de pauta y créditos detallados. | Inyecta el contexto específico a las tareas del planificador, los prompts generativos y los copys de publicación en Postiz. |
 
 ---
 
@@ -72,10 +72,13 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
   - EP de 6 semanas
   - Álbum de 12 semanas
   - Remix / Edición Deluxe
-- **Hitos Bloqueantes y Dependencias Duras (Gatekeepers):** Reglas automáticas de negocio que alertan y recalculan fechas si se producen retrasos críticos (ej. entrega tardía del máster que compromete la ventana de pitching editorial en Spotify for Artists o la distribución a plataformas).
-- **Control de Acceso Basado en Roles (RBAC):**
-  - **Label Manager / A&R:** Supervisión total sobre presupuestos, cronogramas globales, activos y aprobaciones de pauta publicitaria.
-  - **Artista / Manager:** Espacio de trabajo centrado en la revisión de tareas, aprobación ágil de copys/artes y visualización del progreso.
+- **Gestión de Activos por Enlace Externo (Cero Fricción de Subida):**
+  - Indie-Sync Suite no aloja ni procesa archivos pesados de audio en servidores propios.
+  - Los usuarios enlazan directamente a sus servicios existentes de almacenamiento (**Google Drive, Dropbox, Box, Disco.ac, WeTransfer o enlaces privados de SoundCloud/Audius**).
+- **Hitos Bloqueantes y Dependencias Duras (Gatekeepers):** Reglas automáticas de negocio que alertan y recalculan fechas si se producen retrasos críticos. El hito crítico de entrega del máster se considera cumplido al registrar y verificar el enlace externo al audio.
+- **Control de Acceso Basado en Roles (RBAC) y Colaboración Asimétrica:**
+  - **Label Manager / A&R:** Supervisión total sobre presupuestos, cronogramas globales, activos y aprobaciones de pauta desde la app de escritorio en **Tauri**.
+  - **Artista / Manager:** Espacio de trabajo simplificado (web móvil vía Magic Link sin descargas) centrado en la revisión de tareas, acceso al enlace del máster, aprobación ágil de copys/artes y visualización del progreso.
 
 ---
 
@@ -91,7 +94,7 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
 
 ## 7. Distribución y Pauta Programática
 
-- **Programación Multicanal Unificada:** Planificación sincronizada de teasers, anuncios de lanzamiento y contenido post-release en redes sociales y DSPs.
+- **Programación Multicanal Unificada:** Planificación sincronizada de teasers, anuncios de lanzamiento y contenido post-release en redes sociales y DSPs a través del motor headless de Postiz en la nube.
 - **Microcampañas Publicitarias Adaptativas:** Gestión optimizada de presupuestos reducidos ($20–$100 USD) orientados a maximizar pre-saves, reproducciones y conversiones mediante pruebas A/B de copys y creativos.
 
 ---
@@ -113,13 +116,13 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
 
 ## 10. Capa de Orquestación y Conectividad Externa (BYOK)
 
-- **Chat Integrado en Barra Lateral (In-App Sidebar):** Asistente operativo contextual capaz de ejecutar acciones directas en la plataforma (agendar tareas, redactar textos, proponer ajustes al calendario y disparar generaciones).
-- **Interoperabilidad vía API REST / Webhooks:** Capacidad de conexión con herramientas externas y clientes de modelos de lenguaje (ChatGPT Actions, Claude, Antigravity) para interactuar con la plataforma de forma remota.
+- **Chat Integrado en Barra Lateral:** Asistente operativo contextual capaz de ejecutar acciones directas en la plataforma (agendar tareas, redactar textos, proponer ajustes al calendario y disparar generaciones).
+- **Interoperabilidad vía API REST / Webhooks y MCP:** Capacidad de conexión con herramientas externas y clientes de modelos de lenguaje (ChatGPT Actions, Claude, Antigravity) para interactuar con la plataforma de forma local o remota.
 - **Bóveda de Credenciales (BYOK):** Almacenamiento seguro bajo control exclusivo del usuario para claves de modelos generativos (OpenAI, Anthropic, Stability/Flux) y cuentas publicitarias.
 
 ---
 
-## 11. Desglose de Historias de Usuario (Backlog Funcional)
+## 11. Desglose de Historias de Usuario (Backlog Funcional Completo)
 
 ### Épica 1: Identidad y Contexto de Marca (Brand Vault)
 
@@ -149,6 +152,24 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
   1. Permite registrar, editar y borrar API keys (OpenAI, Anthropic, Stability/Flux, Meta Ads, TikTok Ads).
   2. Encripta los valores sensibles antes de guardarlos.
   3. Valida la conectividad de la clave antes de marcarla como activa.
+
+#### HU-1.4: Ficha Conceptual del Lanzamiento (Contexto Nivel 3)
+- **Como** A&R, Manager o Artista,
+- **Quiero** registrar la narrativa específica, concepto lírico, mood y metadatos de un lanzamiento individual,
+- **Para que** las tareas del planificador y los generadores de contenido hereden el contexto específico del track sin perder la identidad general del artista.
+- **Criterios de Aceptación:**
+  1. Permite capturar la narrativa del track, mood sonoro, temática lírica, códigos ISRC/UPC y fecha objetivo.
+  2. Asocia la ficha del lanzamiento al Artista correspondiente heredando automáticamente sus paletas y arquetipo.
+  3. Permite congelar un snapshot inmutable del contexto al iniciar la fase de producción de activos.
+
+#### HU-1.5: Verificación de Estado, Conectividad y Cuotas de Credenciales BYOK
+- **Como** Usuario de la plataforma,
+- **Quiero** verificar la validez, saldo y estado de conexión de mis API keys configuradas en la bóveda,
+- **Para que** no se interrumpan las generaciones por falta de crédito o claves caducadas en medio de una campaña.
+- **Criterios de Aceptación:**
+  1. Ofrece un botón de "Probar Conexión" por cada credencial registrada.
+  2. Muestra indicadores visuales de estado (Verde = Activa/Con saldo, Amarillo = Cuota baja, Rojo = Error/Invalida).
+  3. Registra logs de error detallados sin exponer el valor de la clave en texto plano.
 
 ---
 
@@ -180,6 +201,33 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
   1. El rol Label Manager tiene acceso completo a presupuestos, dependencias y configuración global.
   2. El rol Artista/Manager solo ve tareas asignadas, bandeja de aprobación de contenidos y dashboard de métricas.
 
+#### HU-2.4: Registro y Validación de Enlaces a Activos de Audio (Drive / Dropbox / Disco)
+- **Como** A&R o Productor musical,
+- **Quiero** vincular los enlaces externos a los archivos máster y stems (Google Drive, Dropbox, Box, Disco.ac),
+- **Para que** todo el equipo tenga acceso al audio final sin saturar la plataforma con subidas pesadas.
+- **Criterios de Aceptación:**
+  1. Permite registrar URLs externas categorizadas (Master WAV, Instrumental, Stems, Acapella).
+  2. Valida que el formato del enlace sea accesible y válido antes de guardarlo.
+  3. Marca automáticamente el hito de "Entrega del Máster" como completado al registrar la URL verificada.
+
+#### HU-2.5: Bucle Formal de Aprobación y Rechazo con Feedback de Colaboradores
+- **Como** Label Manager o Artista,
+- **Quiero** aprobar o rechazar entregables (artes, copys, fechas) con comentarios específicos de ajuste,
+- **Para que** el equipo conozca con claridad qué cambios se requieren antes de continuar.
+- **Criterios de Aceptación:**
+  1. Las tareas con entregables cuentan con estados formales: `Borrador`, `En Revisión`, `Aprobado` y `Rechazado`.
+  2. Al rechazar un entregable, exige ingresar un motivo o feedback explicativo.
+  3. Notifica al responsable asignado cuando un entregable es aprobado o devuelto para corrección.
+
+#### HU-2.6: Recálculo en Cascada del Cronograma ante Retrasos Críticos
+- **Como** A&R o Planificador del sello,
+- **Quiero** que el sistema recalcule automáticamente las fechas de las tareas dependientes cuando un hito se pospone,
+- **Para que** el cronograma general mantenga la coherencia de tiempos sin necesidad de editar fecha por fecha a mano.
+- **Criterios de Aceptación:**
+  1. Al cambiar la fecha de un hito padre, proyecta el impacto en las tareas hijas dependientes.
+  2. Presenta una previsualización interactiva con el "Antes" y "Después" de las fechas propuestas.
+  3. Aplica los cambios en bloque tras la confirmación del usuario con opción de deshacer (*undo*).
+
 ---
 
 ### Épica 3: Pipeline Creativo Multimedia
@@ -202,6 +250,33 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
   2. Permite marcar una pieza como "Aprobada", "Para descartar" o solicitar "Regenerar variante".
   3. Las piezas aprobadas se vinculan automáticamente a las tareas del planificador.
 
+#### HU-3.3: Generación de Copys y Guiones Promocionales (Hooks, Captions y Teasers)
+- **Como** Social Media Manager o Artista,
+- **Quiero** generar textos de publicación, ganchos (*hooks*) para TikTok y descripciones de YouTube alineados al tono de voz del artista,
+- **Para que** el contenido escrito resuene con la audiencia y mantenga coherencia narrativa.
+- **Criterios de Aceptación:**
+  1. Ofrece plantillas de copys por fase: Anuncio de pre-save, teaser de audio, countdown, release day y agradecimiento.
+  2. Inyecta el arquetipo de personalidad y vocabulario característico del artista desde el Brand Vault.
+  3. Genera al menos 3 variantes de texto por publicación con conteo de caracteres y hashtags sugeridos.
+
+#### HU-3.4: Maquetación Tipográfica Vectorial sobre Artes de Portada
+- **Como** Diseñador o A&R,
+- **Quiero** superponer el título del tema y el nombre del artista con tipografía limpia y posicionamiento exacto sobre la imagen generada,
+- **Para que** la portada final cumpla con los estándares tipográficos profesionales de los DSPs sin depender del texto defectuoso de la IA.
+- **Criterios de Aceptación:**
+  1. Permite seleccionar fuentes tipográficas oficiales definidas en el perfil del artista.
+  2. Dispone de controles de tamaño, alineación, color, contraste y ubicación (superior, centro, inferior).
+  3. Renderiza y exporta la composición final a 3000x3000px en formato PNG/JPG sin pérdida.
+
+#### HU-3.5: Repositorio Central de Activos Aprobados del Release
+- **Como** Miembro del equipo de marketing,
+- **Quiero** acceder a una galería unificada de todos los artes, videos y copys aprobados para un lanzamiento,
+- **Para que** los activos estén listos para ser programados en redes sin búsquedas dispersas en carpetas locales.
+- **Criterios de Aceptación:**
+  1. Organiza los activos por formato (1:1 Portada, 9:16 Canvas/Reel, 16:9 Banner, Textos).
+  2. Permite previsualizar, descargar en alta resolución o enviar directamente al módulo de distribución.
+  3. Muestra el estado de aprobación y fecha de creación de cada elemento.
+
 ---
 
 ### Épica 4: Publicación y Pauta Programática
@@ -223,6 +298,33 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
   1. Solicita únicamente presupuesto, rango de fechas, link destino y audiencia objetivo.
   2. Realiza llamadas a las APIs de pauta (Meta/TikTok Ads) usando las credenciales BYOK del usuario.
   3. Muestra confirmación del gasto aprobado y estado de la campaña en la plataforma.
+
+#### HU-4.3: Conexión y Gestión de Cuentas Sociales y Publicitarias (OAuth Hub)
+- **Como** Label Manager o Social Media Manager,
+- **Quiero** autenticar y gestionar las conexiones de perfiles sociales (Instagram, Facebook, TikTok, YouTube, X) y cuentas de anuncios,
+- **Para que** la plataforma pueda publicar y pautar en nombre del sello o artista de forma autorizada.
+- **Criterios de Aceptación:**
+  1. Permite iniciar flujos de autorización OAuth estándar para cada red soportada.
+  2. Muestra el estado de salud de cada conexión (Conectado, Token por expirar, Desconectado).
+  3. Permite renovar credenciales o revocar accesos en cualquier momento con un clic.
+
+#### HU-4.4: Calendario Visual de Contenidos Sincronizado con el Lanzamiento
+- **Como** Planificador de marketing,
+- **Quiero** visualizar en una cuadrícula mensual/semanal todas las publicaciones programadas respecto al día del estreno,
+- **Para que** pueda detectar vacíos de contenido o sobrecargas en la comunicación de la campaña.
+- **Criterios de Aceptación:**
+  1. Muestra un calendario interactivo con vista mensual y semanal drag-and-drop.
+  2. Destaca visualmente el "Release Day" como el hito central del calendario.
+  3. Permite reprogramar fechas de publicaciones simplemente arrastrándolas en el calendario.
+
+#### HU-4.5: Cola de Reintentos y Alertas de Fallos de Publicación
+- **Como** Operador del sello,
+- **Quiero** recibir alertas inmediatas si una publicación o anuncio falla al publicarse y contar con reintentos automáticos,
+- **Para que** no se pierda el impacto de un hito de lanzamiento por caídas de API o problemas de formato.
+- **Criterios de Aceptación:**
+  1. Ejecuta hasta 3 reintentos automáticos con retroceso exponencial ante fallos transitorios de red.
+  2. Envía una notificación urgente al usuario si el fallo persiste indicando el motivo devuelto por la red social.
+  3. Permite editar el post fallido y disparar una publicación manual inmediata desde la interfaz.
 
 ---
 
@@ -255,6 +357,33 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
   2. Detecta métricas numéricas y series de tiempo principales.
   3. Genera dinámicamente tarjetas de métricas y gráficos visuales correspondientes en la interfaz.
 
+#### HU-5.4: Ingesta de Datos de Streaming vía Importación de Reportes / CSV
+- **Como** Label Manager o Artista,
+- **Quiero** subir reportes analíticos de streaming (CSV de Spotify for Artists, Apple Music for Artists o distribuidores),
+- **Para que** el panel consolide métricas de escuchas reales sin depender de APIs cerradas de DSPs.
+- **Criterios de Aceptación:**
+  1. Reconoce y procesa formatos CSV estándar de las principales plataformas y distribuidoras.
+  2. Mapea automáticamente columnas de streams, oyentes mensuales, guardados y países principales.
+  3. Incorpora los datos históricos importados a las series temporales del dashboard.
+
+#### HU-5.5: Cálculo de Eficiencia y Retorno de Pauta (Costo por Pre-save / Clic)
+- **Como** Encargado de Marketing o A&R,
+- **Quiero** visualizar el costo unitario por pre-save y por reproducción derivado de las microcampañas,
+- **Para que** pueda evaluar la rentabilidad del presupuesto publicitario invertido.
+- **Criterios de Aceptación:**
+  1. Cruza el gasto publicitario total de Meta/TikTok Ads con los pre-saves y clics registrados en el Smart Link.
+  2. Calcula y muestra métricas de CPA (Costo por Adquisición / Pre-save) y CPC (Costo por Clic).
+  3. Compara el rendimiento relativo entre diferentes variantes de creativos para identificar el más eficiente.
+
+#### HU-5.6: Alertas Proactivas de Oportunidades y Riesgos de Campaña
+- **Como** Usuario,
+- **Quiero** que el asesor estratégico me alerte proactivamente sobre anomalías o caídas de tracción en el lanzamiento,
+- **Para que** pueda reaccionar a tiempo con acciones tácticas antes de que termine el ciclo de estreno.
+- **Criterios de Aceptación:**
+  1. Detecta variaciones significativas de rendimiento (ej. caída de engagement >30% respecto a la media).
+  2. Genera tarjetas de sugerencia accionables (ej. *"Reasignar $15 al anuncio B con mayor tasa de conversión"*).
+  3. Permite descartar la recomendación o ejecutarla con un solo clic.
+
 ---
 
 ### Épica 6: Orquestador y Conectividad Externa
@@ -274,3 +403,21 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
 - **Criterios de Aceptación:**
   1. Expone endpoints documentados para consultar estado de lanzamientos, Brand Vault y métricas.
   2. Permite la ejecución de acciones mediante solicitudes HTTP seguras con token de acceso.
+
+#### HU-6.3: Protocolo de Acciones (Tool Calling) y Guardrails de Confirmación para el Chat
+- **Como** Usuario operando mediante lenguaje natural,
+- **Quiero** que el asistente cuente con herramientas estrictamente delimitadas y pida confirmación antes de cambios destructivos,
+- **Para que** no se modifiquen presupuestos ni se eliminen tareas por errores de interpretación de la IA.
+- **Criterios de Aceptación:**
+  1. Define un catálogo explícito de tools ejecutables (`crear_tarea`, `mover_fecha`, `ajustar_presupuesto`, `redactar_copy`).
+  2. Exige confirmación explícita mediante botón o modal para acciones destructivas o cambios presupuestarios.
+  3. Mantiene un registro de auditoría (*action log*) de todas las acciones ejecutadas por el agente.
+
+#### HU-6.4: Servidor MCP Local para Clientes Externos (Antigravity / Claude Desktop)
+- **Como** Desarrollador o Usuario de asistentes de escritorio como Antigravity o Claude Desktop,
+- **Quiero** conectar mi cliente de IA local directamente a Indie-Sync Suite mediante el protocolo MCP,
+- **Para que** mi agente externo pueda inspeccionar el Brand Vault, consultar tareas y ejecutar acciones operativas desde su propia interfaz.
+- **Criterios de Aceptación:**
+  1. Expone un servidor MCP local funcional compatible con la especificación de Anthropic/Model Context Protocol.
+  2. Implementa recursos (resources) para lectura del Brand Vault y tareas del release.
+  3. Implementa herramientas (tools) con validación de esquemas JSON para crear y actualizar entidades en la suite.
