@@ -5,7 +5,7 @@
 ### Asignación & Metadatos
 - **Issue ID**: ${ISSUE_KEY}
 - **Developer**: [jaymusicmachine | jeisonsosa]
-- **Team**: BRIDS App
+- **Team**: Indie Suite App
 - **Feature Type**: [Feature | Refactor | Fix | Epic | Security | Nft]
 - **Priority**: [High | Medium | Low | No priority]
 - **Label**: [scope:*, type:*, risk:*]
@@ -35,7 +35,7 @@
 ### Assignment & Metadata
 - **Issue ID**: ${ISSUE_KEY}
 - **Developer**: [jaymusicmachine | jeisonsosa]
-- **Team**: BRIDS App
+- **Team**: Indie Suite App
 - **Feature Type**: [Feature | Refactor | Fix | Epic | Security | Nft]
 - **Priority**: [High | Medium | Low | No priority]
 - **Label**: [scope:*, type:*, risk:*]

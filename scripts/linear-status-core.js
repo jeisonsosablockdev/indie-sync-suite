@@ -21,11 +21,11 @@ function normalizeIssueKey(rawIssueKey) {
   const value = String(rawIssueKey ?? "").trim().toUpperCase();
 
   if (!value) {
-    throw new Error("A Linear issue key is required (example: BRI-149).");
+    throw new Error("A Linear issue key is required (example: ISS-149).");
   }
 
   if (!/^[A-Z]+-\d+$/.test(value)) {
-    throw new Error(`Invalid Linear issue key: ${rawIssueKey}. Use the form BRI-149 or EPIC-011.`);
+    throw new Error(`Invalid Linear issue key: ${rawIssueKey}. Use the form ISS-149 or EPIC-011.`);
   }
 
   return value;

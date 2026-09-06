@@ -19,7 +19,7 @@ export default function HomePage() {
       <header className="flex w-full max-w-5xl items-center justify-between border-b border-neutral-800/80 pb-6">
         <div className="flex items-center gap-3">
           <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 shadow-md shadow-blue-500/20" />
-          <h1 className="text-xl font-bold tracking-tight text-white">Next.js + Solana</h1>
+          <h1 className="text-xl font-bold tracking-tight text-white">Indie Suite (ISS)</h1>
         </div>
         <div className="flex items-center gap-4">
           <ThemeToggle />

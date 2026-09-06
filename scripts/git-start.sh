@@ -10,15 +10,15 @@ Uso:
 
 Ejemplos:
   ./scripts/git-start.sh app initial-ui
-  ./scripts/git-start.sh feature shared fix-ui-elements --mode parent --owner czambrano --issue BRI-38
-  ./scripts/git-start.sh bugfix shared login-redirect-fix --mode parent --owner czambrano --issue BRI-171
+  ./scripts/git-start.sh feature shared fix-ui-elements --mode parent --owner czambrano --issue ISS-38
+  ./scripts/git-start.sh bugfix shared login-redirect-fix --mode parent --owner czambrano --issue ISS-171
   ./scripts/git-start.sh epic shared admin-collections-console --mode parent --owner czambrano --issue EPIC-011
-  ./scripts/git-start.sh SPEC hero-copy-tightening --mode spec --owner czambrano --issue BRI-38 --base feature/czambrano-BRI-38-fix-ui-elements
+  ./scripts/git-start.sh SPEC hero-copy-tightening --mode spec --owner czambrano --issue ISS-38 --base feature/czambrano-ISS-38-fix-ui-elements
 
 Options:
   --mode <single|parent|spec>
   --owner <handle>
-  --issue <BRI-149>
+  --issue <ISS-149>
   --base <branch>
 USAGE
 }
@@ -52,7 +52,7 @@ normalize_issue_key() {
   fi
 
   if [[ "${value}" =~ ^[0-9]+$ ]]; then
-    printf 'BRI-%s' "${value}"
+    printf 'ISS-%s' "${value}"
     return 0
   fi
 
@@ -61,7 +61,7 @@ normalize_issue_key() {
     return 0
   fi
 
-  echo "❌ Issue inválido: ${raw}. Usa formato BRI-149."
+  echo "❌ Issue inválido: ${raw}. Usa formato ISS-149."
   exit 1
 }
 

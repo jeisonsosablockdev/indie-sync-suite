@@ -159,8 +159,6 @@ importers:
 
   apps/web: {}
 
-  packages/solana-client: {}
-
 packages:
 
   '@adobe/css-tools@4.5.0':

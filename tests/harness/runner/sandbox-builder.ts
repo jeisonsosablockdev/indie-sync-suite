@@ -19,7 +19,7 @@ export function createSandboxWorkspace(testName: string): SandboxEnvironment {
   // Initialize a fresh isolated git repository
   execSync('git init -b develop', { cwd: sandboxPath, stdio: 'ignore' });
   execSync('git config user.name "Harness Test"', { cwd: sandboxPath, stdio: 'ignore' });
-  execSync('git config user.email "harness-test@brids.internal"', { cwd: sandboxPath, stdio: 'ignore' });
+  execSync('git config user.email "harness-test@indiesuite.internal"', { cwd: sandboxPath, stdio: 'ignore' });
 
   const createFile = (relativePath: string, content: string) => {
     const fullPath = path.join(sandboxPath, relativePath);

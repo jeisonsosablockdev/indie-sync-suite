@@ -12,7 +12,7 @@ resource: https://github.com/jeisonsosablockdev/brids/blob/develop/knowledge/gui
 ## VERSION ESPAÑOL
 
 ### Propósito
-Este protocolo define una política transversal de desarrollo para que la documentación de Linear y los artefactos locales queden atribuidos al desarrollador correcto, vivan en el lugar correcto y se mantengan sincronizados en el workflow del proyecto BRIDS.
+Este protocolo define una política transversal de desarrollo para que la documentación de Linear y los artefactos locales queden atribuidos al desarrollador correcto, vivan en el lugar correcto y se mantengan sincronizados en el workflow del proyecto Indie Suite.
 
 ### Política de identidad del desarrollador
 - Antes de crear, actualizar o sincronizar cualquier contenido en Linear, el agente debe confirmar con qué desarrollador del proyecto está trabajando.
@@ -29,7 +29,7 @@ Este protocolo define una política transversal de desarrollo para que la docume
 - Linear es la fuente principal para el issue, sus objetivos, alcance, SPECS y criterios de aceptación.
 - Los archivos `.md` del repositorio son el registro Git local y deben mantenerse congruentes con Linear.
 - Cuando haya diferencia entre Linear y los `.md`, se debe sincronizar Linear primero y luego actualizar el registro local.
-- Esta política debe integrarse en los documentos principales de gobierno, documentación y workflow del proyecto BRIDS.
+- Esta política debe integrarse en los documentos principales de gobierno, documentación y workflow del proyecto Indie Suite.
 
 ### Regla de SPECS
 - Los SPECS deben quedar en el cuerpo del issue de Linear.
@@ -70,7 +70,7 @@ Este protocolo define una política transversal de desarrollo para que la docume
   - `ENGLISH VERSION`
 - La versión en español va primero.
 - La versión en inglés va después y debe preservar el mismo significado, alcance y criterios.
-- Esta política debe integrarse en los documentos principales de documentación del proyecto BRIDS.
+- Esta política debe integrarse en los documentos principales de documentación del proyecto Indie Suite.
 
 ### Política ortográfica del español
 - La documentación en español debe escribirse con tildes y signos correctos.
@@ -92,7 +92,7 @@ Este protocolo define una política transversal de desarrollo para que la docume
 ## ENGLISH VERSION
 
 ### Purpose
-This protocol defines a cross-project development policy so Linear documentation and local artifacts are attributed to the correct developer, live in the correct place, and remain synchronized in the BRIDS project workflow.
+This protocol defines a cross-project development policy so Linear documentation and local artifacts are attributed to the correct developer, live in the correct place, and remain synchronized in the Indie Suite project workflow.
 
 ### Developer Identity Policy
 - Before creating, updating, or syncing any Linear content, the agent must confirm which project developer is responsible for the task.
@@ -109,7 +109,7 @@ This protocol defines a cross-project development policy so Linear documentation
 - Linear is the primary source for the issue, objectives, scope, SPECS, and acceptance criteria.
 - Repository `.md` files are the local Git record and must stay consistent with Linear.
 - When Linear and local `.md` files diverge, sync Linear first and then update the local record.
-- This policy must be integrated into the primary governance, documentation, and workflow documents of the BRIDS project.
+- This policy must be integrated into the primary governance, documentation, and workflow documents of the Indie Suite project.
 
 ### SPEC Rule
 - SPECS must live in the Linear issue body.
@@ -150,7 +150,7 @@ This protocol defines a cross-project development policy so Linear documentation
   - `ENGLISH VERSION`
 - The Spanish version comes first.
 - The English version comes second and must preserve the same meaning, scope, and criteria.
-- This policy must be integrated into the primary documentation documents of the BRIDS project.
+- This policy must be integrated into the primary documentation documents of the Indie Suite project.
 
 ### Spanish Orthography Policy
 - Spanish documentation must use correct accents and punctuation.

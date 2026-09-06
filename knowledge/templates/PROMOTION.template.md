@@ -3,7 +3,7 @@ id: PROMO-YYYY-MM-###
 title: Replace with the promotion proposal title
 status: triaged
 scope: shared
-source_issue: BRI-###
+source_issue: ISS-###
 source_feature: knowledge/features/feature-or-fix-note.md
 source_commit: pending
 promotion_target: guide

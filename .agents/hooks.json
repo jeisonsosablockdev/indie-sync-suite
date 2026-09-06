@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "description": "Lifecycle hooks, subagent enforcement and Double-Gatekeeper protocol configuration for Brids monorepo",
+  "description": "Lifecycle hooks, subagent enforcement and Double-Gatekeeper protocol configuration for Indie Suite monorepo",
   "lifecycle_hooks": {
     "pre_branch": {
       "enforce_subagents": ["architect"],

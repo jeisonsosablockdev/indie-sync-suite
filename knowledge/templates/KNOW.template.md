@@ -3,7 +3,7 @@ id: KNOW-YYYY-MM-###
 title: Replace with the reusable observation title
 status: observed
 scope: shared
-source_issue: BRI-###
+source_issue: ISS-###
 source_feature: knowledge/features/feature-or-fix-note.md
 source_commit: pending
 promotion_target: none

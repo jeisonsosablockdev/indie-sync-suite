@@ -16,7 +16,7 @@ jobs:
     env:
       VERCEL_ORG_ID: team_AzWJO6CPd16DRP3TPNt5Ey4c
       VERCEL_PROJECT_ID: prj_2CgUA7sRLsoazJKP5EQ6zWw0ebma
-      TARGET_ALIAS: qa.brids.io
+      TARGET_ALIAS: qa.indiesuite.io
     steps:
       - name: Checkout
         uses: actions/checkout@v6

@@ -16,7 +16,7 @@ describe('06 - PR Governance & Automated Post-Acceptance PR Workflow', () => {
 Added new feature slice.
 
 ## Issue
-BRI-184
+ISS-184
       `.trim();
 
       sandbox.createFile('pr-body.md', invalidPrBody);
@@ -42,7 +42,7 @@ BRI-184
 Added new feature slice.
 
 ## Issue
-[BRI-184](https://linear.app/brids-app/issue/BRI-184/test-suite-for-harnessing)
+[ISS-184](https://linear.app/indie-suite/issue/ISS-184/test-suite-for-harnessing)
 
 ## RFC
 RFC-015

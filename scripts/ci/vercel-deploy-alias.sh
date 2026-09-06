@@ -16,13 +16,15 @@ required_env "TARGET_ALIAS"
 required_env "GIT_COMMIT_REF"
 required_env "GIT_COMMIT_SHA"
 
+VERCEL_SCOPE="${VERCEL_SCOPE:-brids1-projects}"
+
 echo "Deploying preview for ref '${GIT_COMMIT_REF}' at sha '${GIT_COMMIT_SHA}'..."
 
 DEPLOYMENT_URL="$(
   npx vercel@latest deploy \
     --yes \
     --token "${VERCEL_TOKEN}" \
-    --scope brids1-projects \
+    --scope "${VERCEL_SCOPE}" \
     --meta githubCommitRef="${GIT_COMMIT_REF}" \
     --meta githubCommitSha="${GIT_COMMIT_SHA}" \
     --meta ciAliasTarget="${TARGET_ALIAS}"
@@ -40,9 +42,9 @@ echo "Assigning alias ${TARGET_ALIAS}..."
 
 npx vercel@latest alias set "${DEPLOYMENT_URL}" "${TARGET_ALIAS}" \
   --token "${VERCEL_TOKEN}" \
-  --scope brids1-projects
+  --scope "${VERCEL_SCOPE}"
 
 echo "Inspecting ${TARGET_ALIAS}..."
 npx vercel@latest inspect "${TARGET_ALIAS}" \
   --token "${VERCEL_TOKEN}" \
-  --scope brids1-projects
+  --scope "${VERCEL_SCOPE}"

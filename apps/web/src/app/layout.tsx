@@ -9,8 +9,8 @@ import { Providers } from "./providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Next.js + Solana Starter",
-  description: "High-performance Web3 starter with 4-Layer Architecture and Autonomous Governance",
+  title: "Indie Suite (ISS) - Next.js + Solana",
+  description: "Indie Suite - High-performance Web3 platform with 4-Layer Architecture and Autonomous Governance",
 };
 
 export default function RootLayout({

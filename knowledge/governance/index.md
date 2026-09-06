@@ -10,7 +10,7 @@ resource: https://github.com/jeisonsosablockdev/brids/blob/develop/knowledge/gov
 
 # Governance
 
-Policies, specifications, and governance documents for the BRIDS platform.
+Policies, specifications, and governance documents for the Indie Suite platform.
 
 ## Documents
 

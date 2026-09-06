@@ -11,7 +11,7 @@ END_MARKER="<!-- DOCS-AUTO:END -->"
 
 if [[ ! -f "$README_FILE" ]]; then
   cat > "$README_FILE" <<'BASE'
-# BRIDS
+# Indie Suite (ISS)
 
 This README includes an auto-generated snapshot of project documentation.
 

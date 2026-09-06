@@ -1,10 +1,10 @@
 {
   "version": "1.0.0",
-  "task_id": "BRI-8",
+  "task_id": "ISS-8",
   "story_id": "STORY-UX-UI-FIXES",
   "spec_id": "SPEC-13",
-  "branch": "SPEC/jaymusicmachine-BRI-8-s13-distribution-run-squads-view",
-  "parent_branch": "feature/jaymusicmachine-BRI-8-distributions-ux-ui-fixes",
+  "branch": "SPEC/jaymusicmachine-ISS-8-s13-distribution-run-squads-view",
+  "parent_branch": "feature/jaymusicmachine-ISS-8-distributions-ux-ui-fixes",
   "current_phase": "PHASE_7_ARCHITECT_GATE_2_VALIDATED",
   "human_design_approval": {
     "approved": true,

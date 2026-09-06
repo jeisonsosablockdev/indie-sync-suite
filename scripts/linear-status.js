@@ -8,11 +8,11 @@ const {
 function usage() {
   return [
     "Usage:",
-    "  node ./scripts/linear-status.js --state <start|review|done> [--issue <BRI-149>] [--branch <branch>] [--cwd <path>]",
+    "  node ./scripts/linear-status.js --state <start|review|done> [--issue <ISS-149>] [--branch <branch>] [--cwd <path>]",
     "",
     "Examples:",
     "  node ./scripts/linear-status.js --state start",
-    "  node ./scripts/linear-status.js --state review --issue BRI-149",
+    "  node ./scripts/linear-status.js --state review --issue ISS-149",
     "  node ./scripts/linear-status.js --state done --issue EPIC-011",
     "",
     "Environment:",

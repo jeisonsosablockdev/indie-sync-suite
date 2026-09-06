@@ -12,22 +12,22 @@ echo "== Generating Compliant PR Body =="
 
 ISSUE_ID="$(node -e "try{const p=JSON.parse(require('fs').readFileSync('${ROOT_DIR}/.agents/active_task_state.json','utf8'));process.stdout.write(p.task_id||'');}catch(e){}" 2>/dev/null || echo "")"
 if [[ -z "${ISSUE_ID}" ]]; then
-  ISSUE_ID="$(echo "${BRANCH}" | grep -oE 'BRI-[0-9]+' | head -1 || echo "BRI-186")"
+  ISSUE_ID="$(echo "${BRANCH}" | grep -oE 'ISS-[0-9]+' | head -1 || echo "ISS-186")"
 fi
 
 FEATURE_DOC="$(find "${ROOT_DIR}/knowledge/features" "${ROOT_DIR}/knowledge/fixes" -maxdepth 1 -name "*${ISSUE_ID}*.md" ! -name "*-implementation.md" 2>/dev/null | head -1 | sed "s|${ROOT_DIR}/||" || echo "")"
 RFC_DOC="$(find "${ROOT_DIR}/knowledge/features" "${ROOT_DIR}/knowledge/fixes" -maxdepth 1 -name "*${ISSUE_ID}*-implementation.md" 2>/dev/null | head -1 | sed "s|${ROOT_DIR}/||" || echo "")"
 
 if [[ -z "${FEATURE_DOC}" ]]; then
-  FEATURE_DOC="knowledge/features/feature-jeisonsosa-BRI-186-monorepo-fdd-architecture.md"
+  FEATURE_DOC="knowledge/features/feature-jeisonsosa-ISS-186-monorepo-fdd-architecture.md"
 fi
 if [[ -z "${RFC_DOC}" ]]; then
-  RFC_DOC="knowledge/features/feature-jeisonsosa-BRI-186-monorepo-fdd-architecture-implementation.md"
+  RFC_DOC="knowledge/features/feature-jeisonsosa-ISS-186-monorepo-fdd-architecture-implementation.md"
 fi
 
 cat <<EOF > "${OUTPUT_FILE}"
 ## Summary
-Este Pull Request implementa la refactorización integral de la plataforma BRIDS hacia un **Monorepo Workspaces (\`apps/web\`, \`packages/*\`, \`programs/*\`)** con **Feature-Driven Design (FDD)** organizado en 4 capas estrictas (Presentation, Application, Domain, Infrastructure) a lo largo de **16 Feature Slices verticales** y la capa compartida \`shared\`.
+Este Pull Request implementa la refactorización integral de la plataforma Indie Suite (ISS) hacia un **Monorepo Workspaces (\`apps/web\`, \`packages/*\`, \`programs/*\`)** con **Feature-Driven Design (FDD)** organizado en 4 capas estrictas (Presentation, Application, Domain, Infrastructure) a lo largo de **16 Feature Slices verticales** y la capa compartida \`shared\`.
 
 - Feature-Flag Strategy: Refactorización estructural modular en 53 SPECs; preservación total de compatibilidad de contratos públicos y APIs.
 
@@ -51,7 +51,7 @@ Este Pull Request implementa la refactorización integral de la plataforma BRIDS
    - Linter de arquitectura de 4 capas (\`scripts/ci/check-layered-architecture.sh\`) y linter de estructura de monorepo (\`scripts/ci/check-monorepo-structure.sh\`).
 
 ## Issue
-- Issue link/id: [${ISSUE_ID}](https://linear.app/brids/issue/${ISSUE_ID})
+- Issue link/id: [${ISSUE_ID}](https://linear.app/indie-suite/issue/${ISSUE_ID})
 
 ## RFC
 - RFC link/path: [${RFC_DOC}](${RFC_DOC})

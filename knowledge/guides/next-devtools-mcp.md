@@ -1,7 +1,7 @@
 # Next.js DevTools MCP & AI Coding Agents Guide
 
 ## Propósito
-Este documento define la guía canónica para el uso de `next-devtools-mcp` y las herramientas de desarrollo en tiempo real integradas en Next.js 16+ para agentes de IA y desarrolladores en el repositorio `brids`.
+Este documento define la guía canónica para el uso de `next-devtools-mcp` y las herramientas de desarrollo en tiempo real integradas en Next.js 16+ para agentes de IA y desarrolladores en el repositorio `indie-suite`.
 
 ---
 

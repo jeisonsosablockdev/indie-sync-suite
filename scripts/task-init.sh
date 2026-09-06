@@ -18,8 +18,8 @@ Uso:
 Ejemplos:
   ./scripts/task-init.sh --ask
   ./scripts/task-init.sh app initial-ui
-  ./scripts/task-init.sh feature shared fix-ui-elements --mode parent --owner czambrano --issue BRI-38
-  ./scripts/task-init.sh bugfix shared login-redirect-fix --mode parent --owner czambrano --issue BRI-171
+  ./scripts/task-init.sh feature shared fix-ui-elements --mode parent --owner czambrano --issue ISS-38
+  ./scripts/task-init.sh bugfix shared login-redirect-fix --mode parent --owner czambrano --issue ISS-171
   ./scripts/task-init.sh epic shared admin-collections-console --mode parent --owner czambrano --issue EPIC-011
 
 Opciones del bootstrap:
@@ -51,7 +51,7 @@ normalize_issue_key() {
   fi
 
   if [[ "${value}" =~ ^[0-9]+$ ]]; then
-    printf 'BRI-%s' "${value}"
+    printf 'ISS-%s' "${value}"
     return 0
   fi
 
@@ -60,7 +60,7 @@ normalize_issue_key() {
     return 0
   fi
 
-  echo "❌ Issue inválido: ${raw}. Usa formato BRI-149."
+  echo "❌ Issue inválido: ${raw}. Usa formato ISS-149."
   exit 1
 }
 
@@ -285,7 +285,7 @@ if [[ "${ASK_MODE}" == "ask" ]]; then
   esac
 
   if [[ "${BRANCH_MODE}" =~ ^(parent|spec)$ ]]; then
-    prompt_required "What Linear issue key anchors the work (for example BRI-149)?" "" ISSUE_KEY
+    prompt_required "What Linear issue key anchors the work (for example ISS-149)?" "" ISSUE_KEY
     prompt_required "What developer handle owns the branch (for example czambrano)?" "czambrano" OWNER
     OWNER="$(printf '%s' "${OWNER}" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//; s/-+/-/g')"
   fi

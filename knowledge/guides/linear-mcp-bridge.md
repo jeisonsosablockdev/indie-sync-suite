@@ -1,15 +1,15 @@
 ---
 type: Guide
-title: Linear Mcp BRI-dge
-description: Linear Mcp BRI-dge - migrated from knowledge/
+title: Linear MCP Bridge
+description: Linear MCP Bridge - migrated from knowledge/
 tags: [guides]
 timestamp: 2026-07-20T04:23:56Z
-resource: https://github.com/jeisonsosablockdev/brids/blob/develop/knowledge/guides/linear-mcp-bridge.md
+resource: https://github.com/jeisonsosablockdev/indie-suite/blob/develop/knowledge/guides/linear-mcp-bridge.md
 ---
 
 # Linear MCP Bridge
 
-This repository now includes a local MCP bridge for Linear so Codex and other MCP-capable tools can talk to Linear using the same BRIDS workflow rules that already govern branch naming, slice planning, and issue-state transitions.
+This repository now includes a local MCP bridge for Linear so Codex and other MCP-capable tools can talk to Linear using the same Indie Suite workflow rules that already govern branch naming, slice planning, and issue-state transitions.
 
 ## What it provides
 
@@ -52,9 +52,9 @@ npm run mcp:linear
 
 - `.mcp.json` registers the bridge for Codex project scope.
 - `.cursor/mcp.json` registers the bridge for Cursor workspace scope.
-- `README.md` documents the integration next to the other MCP servers already used in BRIDS.
+- `README.md` documents the integration next to the other MCP servers already used in Indie Suite.
 
 ## Notes
 
 - If the API key is missing, the server will fail fast instead of pretending it is connected.
-- The bridge is intentionally scoped to the BRIDS workflow needs first, rather than trying to mirror every Linear feature at once.
+- The bridge is intentionally scoped to the Indie Suite workflow needs first, rather than trying to mirror every Linear feature at once.

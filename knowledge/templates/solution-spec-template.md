@@ -39,6 +39,6 @@
 - [ ] Aprobación explícita del humano registrada.
 
 ## 6. Spec Artifact Traceability
-- **Problem Spec**: [feature-${DOC_SLUG}.md](file:///Users/jaymusicmachine/Documents/Desarrollo/brids/knowledge/features/feature-${DOC_SLUG}.md)
-- **Solution Spec**: [feature-${DOC_SLUG}-implementation.md](file:///Users/jaymusicmachine/Documents/Desarrollo/brids/knowledge/features/feature-${DOC_SLUG}-implementation.md)
-- **Linear Issue**: [Linear Ticket #${ISSUE_ID}](https://linear.app/brids-app/issue/${ISSUE_ID})
+- **Problem Spec**: [feature-${DOC_SLUG}.md](./knowledge/features/feature-${DOC_SLUG}.md)
+- **Solution Spec**: [feature-${DOC_SLUG}-implementation.md](./knowledge/features/feature-${DOC_SLUG}-implementation.md)
+- **Linear Issue**: [Linear Ticket #${ISSUE_ID}](https://linear.app/indie-suite/issue/${ISSUE_ID})

@@ -8,7 +8,7 @@ describe('03 - Task Lifecycle & 8-Phase State Machine', () => {
     try {
       const stateContent = JSON.stringify({
         version: '1.0.0',
-        task_id: 'BRI-TEST',
+        task_id: 'ISS-TEST',
         branch: 'feature/test-branch',
         current_phase: 'PHASE_6_CODE_GREEN',
         phases: {

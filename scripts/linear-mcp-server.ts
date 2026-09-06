@@ -21,11 +21,11 @@ const homeDir = process.env.HOME || "";
 const tools = [
   {
     name: "linear_fetch_issue",
-    description: "Fetch a Linear issue by identifier, for example BRI-168.",
+    description: "Fetch a Linear issue by identifier, for example ISS-168.",
     inputSchema: {
       type: "object",
       properties: {
-        id: { type: "string", description: "Linear issue identifier, for example BRI-168." }
+        id: { type: "string", description: "Linear issue identifier, for example ISS-168." }
       },
       required: ["id"]
     }
@@ -36,7 +36,7 @@ const tools = [
     inputSchema: {
       type: "object",
       properties: {
-        id: { type: "string", description: "Linear issue identifier, for example BRI-168." },
+        id: { type: "string", description: "Linear issue identifier, for example ISS-168." },
         title: { type: "string", description: "New issue title." },
         description: { type: "string", description: "New Markdown issue description." },
         assigneeEmail: { type: "string", description: "Email of the assignee." }
@@ -222,7 +222,7 @@ async function handle(request: JsonRpcRequest) {
           result: {
             protocolVersion,
             capabilities: { tools: {} },
-            serverInfo: { name: "brids-linear-mcp", version: "1.0.0" }
+            serverInfo: { name: "indie-suite-linear-mcp", version: "1.0.0" }
           }
         });
         return;

@@ -93,7 +93,7 @@ if [[ ! -f "${STATE_FILE}" ]]; then
   cat <<'EOF' > "${STATE_FILE}"
 {
   "version": "1.0.0",
-  "task_id": "BRI-181",
+  "task_id": "ISS-181",
   "current_phase": "PHASE_7_VALIDATED",
   "phases": {
     "PHASE_1_BOOTSTRAP": { "completed": true },

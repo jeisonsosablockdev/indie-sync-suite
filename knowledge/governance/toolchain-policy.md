@@ -1,16 +1,16 @@
 ---
 type: Policy
 title: Toolchain & Headless Browser Policy
-description: Standards and decision playbook for headless browser usage (Lightpanda vs Headless Chromium) in BRIDS.
+description: Standards and decision playbook for headless browser usage (Lightpanda vs Headless Chromium) in Indie Suite.
 tags: [governance, toolchain, lightpanda, playwright]
 timestamp: 2026-08-01T10:00:00Z
-resource: https://github.com/jeisonsosablockdev/brids/blob/develop/knowledge/governance/toolchain-policy.md
+resource: https://github.com/jeisonsosablockdev/indie-suite/blob/develop/knowledge/governance/toolchain-policy.md
 ---
 
 # Toolchain & Headless Browser Policy (Lightpanda Decision Playbook)
 
 ## 1. Overview
-To optimize developer experience, CI/CD pipeline performance, and LLM prompt token consumption, BRIDS employs a **Dual-Engine Browser Architecture** managed through `lib/infrastructure/browser-factory.ts`.
+To optimize developer experience, CI/CD pipeline performance, and LLM prompt token consumption, Indie Suite employs a **Dual-Engine Browser Architecture** managed through `lib/infrastructure/browser-factory.ts`.
 
 ## 2. Decision Playbook: Lightpanda vs. Headless Chromium
 

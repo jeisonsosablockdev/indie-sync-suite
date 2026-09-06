@@ -9,7 +9,7 @@ resource: https://github.com/jeisonsosablockdev/brids/blob/develop/knowledge/gov
 
 # Iconography Rules & Governance
 
-This document establishes the canonical design rules for iconography used across BRIDS public and private surfaces. Following the shift away from emojis and generic flat icons (SPEC 02), we enforce a custom minimalist SVG approach that aligns with our Glassmorphism and Dark Mode identity.
+This document establishes the canonical design rules for iconography used across Indie Suite public and private surfaces. Following the shift away from emojis and generic flat icons (SPEC 02), we enforce a custom minimalist SVG approach that aligns with our Glassmorphism and Dark Mode identity.
 
 ## 1. Core Principles
 * **Minimalism first**: Icons must be constructed with clean, unbroken strokes. Avoid unnecessary complexity, fills, or intricate details.
@@ -22,7 +22,7 @@ This document establishes the canonical design rules for iconography used across
 * **Fill**: The base shape should almost always be `fill="none"`.
 
 ## 3. Contrast, Glow & Colors
-We use the BRIDS cyan-purple neon aesthetic to make icons pop against dark `landing-depth-card` or glassmorphic backgrounds.
+We use the Indie Suite cyan-purple neon aesthetic to make icons pop against dark `landing-depth-card` or glassmorphic backgrounds.
 
 * **Base Color**: `text-cyan-400` (equivalent to `rgba(34, 211, 238, 1)`).
 * **Glow Effect (Drop Shadow)**: Icons must emit a subtle glow to feel "alive". Apply the following class: `drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]`.
