@@ -421,3 +421,98 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
   1. Expone un servidor MCP local funcional compatible con la especificación de Anthropic/Model Context Protocol.
   2. Implementa recursos (resources) para lectura del Brand Vault y tareas del release.
   3. Implementa herramientas (tools) con validación de esquemas JSON para crear y actualizar entidades en la suite.
+
+---
+
+## 12. Roadmap y Secuencia de Implementación (Build-First)
+
+Esta sección organiza las **31 Historias de Usuario** en **fases de construcción secuencial e incremental**, estructuradas a partir de la importación y adaptación de los módulos de código abierto, evitando la construcción redundante de componentes ya resueltos.
+
+### 12.1 Principios de Secuenciación
+
+1. **Reutilización Real de Credenciales (Sin Reconstruir la Rueda):**
+   - **Modelos Generativos:** `Open Generative AI` ya incluye el gateway multi-modelo y la ingesta de API keys (vía Muapi o directas). No se construye un backend de bóveda desde cero; se expone su gestión a través de la UI de Tauri y se persiste de forma segura en el Keychain del sistema.
+   - **Autenticación Social y Anuncios:** `Postiz` ya resuelve de forma nativa los flujos OAuth 2.0 y el manejo de tokens con Meta, TikTok, YouTube, X y LinkedIn. La suite se limita a invocar y unificar esta capa visualmente.
+2. **Orquestación Transversal (Épica 6 Distribuida):**
+   - La capa de orquestación ya **no se posterga como un bloque final aislado**. 
+   - El catálogo de herramientas ejecutables (*tool calling* y guardrails de `HU-6.3`) se define en la fase inicial como contrato de integración.
+   - El asistente lateral (`HU-6.1`) se activa tempranamente y va incorporando nuevas *tools* a medida que cada módulo funcional (Brand Vault, Planificador, Creativo, Distribución) entra en operación.
+3. **Flujo de Ejecución por Módulo:**
+   $$\text{Importar/Fork Base OS} \longrightarrow \text{Adaptar al Dominio Musical} \longrightarrow \text{Conectar al Orquestador} \longrightarrow \text{Siguiente Módulo}$$
+
+---
+
+### 12.2 Fases del Backlog de Implementación
+
+```
+Fase 0               Fase 1                  Fase 2               Fase 3
+┌─────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+│ Tauri Shell  │  │ Fork Open Gen AI │  │ Modelo de Plane  │  │ Adaptar pipeline │
+│ Key UI / Byok│→│ Brand Vault CRUD │→│ Motor Planif.    │→│ al dominio       │
+│ Tool Catalog │  │ Sidebar v1       │  │ Arquetipos+Deps  │  │ Brand Injection  │
+│  (Contrato)  │  │                  │  │ RBAC + Sidebar v2│  │ Batching+Gallery │
+└─────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘
+                                                                       │
+                         ┌─────────────────────────────────────────────┘
+                         ▼
+                  Fase 4                  Fase 5               Fase 6
+              ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+              │ Deploy Postiz    │  │ Dashboard + CSV   │  │ Portal Artista   │
+              │ OAuth Hub UI     │→│ ROI + Asesor      │→│ API REST pública │
+              │ Scheduling+Pauta │  │ Alertas proactiv  │  │ MCP Server       │
+              │ Calendar+Retry   │  │ Paneles autónomos │  │                  │
+              └──────────────────┘  └──────────────────┘  └──────────────────┘
+```
+
+#### Fase 0 · Shell Base, Contrato del Orquestador y Exposición de Credenciales
+- **Infraestructura Base:** Inicialización del proyecto de escritorio con Tauri + Next.js 16 (layout base, navegación y Tailwind CSS).
+- **HU-1.3 & HU-1.5 (Credenciales & Health Check):** Conexión de la UI de configuración con el Keychain local de Tauri para almacenar y verificar el estado de las API keys sin desarrollar microservicios propietarios de custodia.
+- **HU-6.3 (Tool Calling & Guardrails - Contrato Base):** Definición del esquema inicial de tools ejecutables, modal de confirmación para acciones críticas y registro de auditoría (*action log*).
+
+#### Fase 1 · Brand Vault & Activación del Asistente (Importación Open Generative AI)
+- **Integración Inicial:** Fork/clon de `Open Generative AI` e integración de su pipeline local en el workspace.
+- **HU-1.1 (Bóveda del Sello y Artista):** Modelo de datos Label $\rightarrow$ Artist (paletas, tipografías, bio, LoRAs).
+- **HU-1.2 (Entrevista Guiada Socrática):** Onboarding conversacional adaptativo para autogenerar el BrandContextDocument.
+- **HU-1.4 (Ficha Conceptual del Lanzamiento - Contexto Nivel 3):** Creación de ficha por track/álbum con herencia automática y snapshot inmutable.
+- **HU-6.1 (Asistente Lateral v1):** Activación del chat lateral con capacidad para leer y modificar el Brand Vault en lenguaje natural.
+
+#### Fase 2 · Motor de Planificación Musical (Absorción Conceptual de Plane)
+- **Diseño del Motor:** Modelado nativo del ciclo musical (Arquetipos $\rightarrow$ Fases Pre/Live/Post $\rightarrow$ Tareas $\rightarrow$ Dependencias) basado en los conceptos de Plane.
+- **HU-2.1 (Creación de Lanzamiento por Arquetipo):** Plantillas de Single, EP, Álbum y Remix con distribución de calendario.
+- **HU-2.4 (Registro y Validación de Enlaces a Audio):** Vinculación sin subida de archivos (Drive, Dropbox, Disco.ac) y validación de enlace.
+- **HU-2.2 (Alertas de Hitos Bloqueantes - Gatekeepers):** Dependencias duras (Master $\rightarrow$ Distribución $\rightarrow$ Pitching) con alertas visuales.
+- **HU-2.6 (Recálculo en Cascada del Cronograma):** Propagación automática de retrasos con previsualización interactiva y opción de deshacer (*undo*).
+- **HU-2.5 (Bucle de Aprobación/Rechazo con Feedback):** Estados formales de entregables (`Borrador`, `En Revisión`, `Aprobado`, `Rechazado`).
+- **HU-2.3 (Vista Diferenciada por Roles - RBAC):** Filtro de permisos entre vista Label Manager y vista Artista.
+- **Expansión HU-6.1 (Asistente Lateral v2):** Registro de tools operativas de planificación (`crear_tarea`, `mover_fecha`, `consultar_cronograma`).
+
+#### Fase 3 · Pipeline Creativo Multimedia Adaptado
+- **HU-3.1 (Generación de Assets Anclados a Marca):** Inyección obligatoria de directrices del Brand Vault en los prompts de los modelos generativos.
+- **HU-3.2 (Exploración y Curaduría en Lote - Batching):** Generación simultánea de mínimo 4 variantes con selector de aprobación/descarte.
+- **HU-3.3 (Generación de Copys y Guiones Promocionales):** Redacción de textos promocionales con inyección del tono de voz del artista.
+- **HU-3.4 (Maquetación Tipográfica Vectorial):** Superposición de textos y títulos con fuentes oficiales sobre las portadas (exportación a 3000x3000px).
+- **HU-3.5 (Repositorio Central de Activos Aprobados):** Galería unificada por formato (1:1, 9:16, 16:9, textos) lista para distribución.
+- **Expansión HU-6.1 (Asistente Lateral v3):** Registro de tools creativas (`generar_portada`, `generar_copy`, `listar_activos`).
+
+#### Fase 4 · Distribución Multicanal & Pauta (Importación Headless de Postiz)
+- **Despliegue Headless:** Fork/deploy del microservicio Postiz en cloud (NestJS + Prisma + PostgreSQL + Redis + Temporal).
+- **HU-4.3 (OAuth Hub de Redes Sociales):** Exposición unificada de los flujos OAuth nativos de Postiz para conectar perfiles sociales y publicitarios.
+- **HU-4.1 (Programación Multicanal de Publicaciones):** Programación de posts sincronizada con los activos aprobados en la Fase 3.
+- **HU-4.4 (Calendario Visual de Contenidos):** Cuadrícula interactiva mensual/semanal con el Release Day como eje central.
+- **HU-4.2 (Ejecución de Microcampañas de Pauta):** Lanzamiento de pauta de bajo presupuesto ($20–$100 USD) mediante APIs de Meta/TikTok Ads.
+- **HU-4.5 (Cola de Reintentos y Alertas de Fallos):** Reintentos exponenciales automáticos y notificaciones de error con edición manual.
+- **Expansión HU-6.1 (Asistente Lateral v4):** Registro de tools de publicación (`programar_post`, `lanzar_campana`).
+
+#### Fase 5 · Analítica Unificada, Asesoría & Paneles Autónomos
+- **HU-5.1 (Dashboard Centralizado de Rendimiento):** Visualización unificada de métricas sociales y de streaming filtradas por fase.
+- **HU-5.4 (Ingesta de Datos vía Reportes / CSV):** Importación y mapeo de datos de Spotify for Artists, Apple Music y distribuidoras.
+- **HU-5.5 (Cálculo de Eficiencia y Retorno de Pauta):** Cálculo automático de CPA (Costo por Pre-save) y CPC cruzando gasto publicitario y conversiones.
+- **HU-5.2 (Asesoría Estratégica con Memoria Persistente):** Consultoría conversacional sobre métricas con gestión de privacidad (borrado de historial).
+- **HU-5.6 (Alertas Proactivas de Oportunidades y Riesgos):** Detección de anomalías de rendimiento y tarjetas de recomendación ejecutables en un clic.
+- **HU-5.3 (Creación Autónoma de Paneles - Modo Avanzado):** Ingesta dinámica de endpoints API arbitrarios con análisis de JSON y composición de dashboards.
+
+#### Fase 6 · Conectividad Externa, Portal del Artista y MCP
+- **Portal del Artista (Cloud Relay):** Web app ligera y responsiva para artistas (Magic Link, cero instalación) para revisión de tareas y entregables.
+- **HU-6.2 (Interfaz API REST Abierta):** Endpoints autenticados y documentados para interacción con plataformas externas.
+- **HU-6.4 (Servidor MCP Local):** Implementación de servidor MCP para conexión nativa con Antigravity, Claude Desktop u otros entornos agénticos.
+
