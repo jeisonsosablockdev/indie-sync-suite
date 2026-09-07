@@ -12,6 +12,9 @@ if [[ -z "${ISSUE_ID}" ]]; then
 fi
 
 DEFAULT_TITLE="refactor(monorepo): Monorepo Workspaces & 4-Layer Feature-Driven Design (FDD) Architecture (${ISSUE_ID})"
+if [[ "${ISSUE_ID}" == "ISS-001" ]]; then
+  DEFAULT_TITLE="docs(spec): initial setup and product specification V3.2 for Indie-Sync Suite (${ISSUE_ID})"
+fi
 TITLE="${PR_TITLE:-${DEFAULT_TITLE}}"
 CURRENT_SHA="$(git -C "${ROOT_DIR}" rev-parse HEAD)"
 
@@ -35,7 +38,11 @@ SCOPE_LABEL="${PR_SCOPE:-scope:app}"
 TYPE_LABEL="${PR_TYPE:-type:refactor}"
 RISK_LABEL="${PR_RISK:-risk:low}"
 
-if [[ "${BRANCH}" == *"solana"* || "${BRANCH}" == *"program"* ]]; then
+if [[ "${ISSUE_ID}" == "ISS-001" ]]; then
+  SCOPE_LABEL="scope:docs"
+  TYPE_LABEL="type:docs"
+  RISK_LABEL="risk:low"
+elif [[ "${BRANCH}" == *"solana"* || "${BRANCH}" == *"program"* ]]; then
   SCOPE_LABEL="scope:program"
 elif [[ "${BRANCH}" == *"app"* || "${BRANCH}" == *"frontend"* || "${BRANCH}" == *"monorepo"* ]]; then
   SCOPE_LABEL="scope:app"
@@ -43,12 +50,14 @@ elif [[ "${BRANCH}" == *"nft"* ]]; then
   SCOPE_LABEL="scope:nft"
 fi
 
-if [[ "${BRANCH}" == *"feature"* ]]; then
-  TYPE_LABEL="type:feature"
-elif [[ "${BRANCH}" == *"fix"* || "${BRANCH}" == *"bugfix"* ]]; then
-  TYPE_LABEL="type:fix"
-elif [[ "${BRANCH}" == *"security"* ]]; then
-  TYPE_LABEL="type:security"
+if [[ "${ISSUE_ID}" != "ISS-001" ]]; then
+  if [[ "${BRANCH}" == *"feature"* ]]; then
+    TYPE_LABEL="type:feature"
+  elif [[ "${BRANCH}" == *"fix"* || "${BRANCH}" == *"bugfix"* ]]; then
+    TYPE_LABEL="type:fix"
+  elif [[ "${BRANCH}" == *"security"* ]]; then
+    TYPE_LABEL="type:security"
+  fi
 fi
 
 echo "Deducted Labels -> Scope: ${SCOPE_LABEL} | Type: ${TYPE_LABEL} | Risk: ${RISK_LABEL}"

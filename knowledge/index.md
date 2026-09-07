@@ -48,3 +48,6 @@ knowledge/
 * [Solana Stack](architecture/solana-stack.md)
 * [Threat Model](architecture/threat-model.md)
 * [Toolchain Policy](architecture/toolchain-policy.md)
+
+### Proposals & Product Concepts
+* [Indie-Sync Suite (ISS) - Arquitectura y Especificación Funcional V3.1 (Tauri + Cloud Hub)](proposals/indie-sync-suite-concept.md)
