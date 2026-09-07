@@ -12,7 +12,7 @@ import {
   SUPPORTED_PROVIDERS,
   CredentialService,
 } from '../pipelines/security/credential-service';
-import { KeyringAdapter } from '../infrastructure/security/keyring-adapter';
+import { BrowserKeyringAdapter } from '../infrastructure/security/browser-keyring';
 import {
   checkProviderHealth,
   HealthCheckResult,
@@ -30,7 +30,7 @@ let credentialServiceInstance: CredentialService | null = null;
 
 function getCredentialService(): CredentialService {
   if (!credentialServiceInstance) {
-    const keyring = new KeyringAdapter();
+    const keyring = new BrowserKeyringAdapter();
     credentialServiceInstance = new CredentialService(keyring);
   }
   return credentialServiceInstance;
