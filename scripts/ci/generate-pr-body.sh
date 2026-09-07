@@ -38,7 +38,7 @@ Este Pull Request establece la **especificación conceptual canónica y arquitec
    - **Postiz Headless Cloud**: Microservicio en la nube para distribución social 24/7, callbacks OAuth públicos (Meta, TikTok, X, YouTube) y colas de publicación.
 2. **Reutilización Estratégica de Código Abierto (Sin Reconstruir la Rueda)**:
    - **Open Generative AI**: Pipeline creativo multimedia desacoplado hacia SQLite local con presets para la industria (1:1 a 3000px, 9:16 Canvas/Reels, 16:9 Banners).
-   - **Postiz**: Motor de distribución social y pauta programática ($20–$100 USD).
+   - **Postiz**: Motor de distribución social y pauta programática (\$20–\$100 USD).
    - **Descarte de Plane**: Se descarta el código de Plane (12 contenedores Docker); el motor de lanzamientos se implementa 100% nativo y ligero en SQLite.
 3. **Bóveda de Marca (Brand Vault) en 3 Niveles & BYOK Seguro**:
    - Herencia estricta: Nivel 1 (Sello), Nivel 2 (Artista) y Nivel 3 (Lanzamiento/Track).
