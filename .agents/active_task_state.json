@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "task_id": "EPIC-01-SPEC-03",
-  "branch": "SPEC/jaymusicmachine-EPIC-01-spec03-brand-vault-crud",
+  "task_id": "EPIC-01-SPEC-04",
+  "branch": "SPEC/jaymusicmachine-EPIC-01-spec04-ai-provider-registry",
   "current_phase": "PHASE_7_VALIDATED",
   "phases": {
     "PHASE_1_BOOTSTRAP": { "completed": true },
