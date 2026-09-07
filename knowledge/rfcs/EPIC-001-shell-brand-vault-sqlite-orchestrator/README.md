@@ -11,7 +11,7 @@ timestamp: 2026-09-07T00:00:00Z
 ## Metadata
 - Epic ID: `EPIC-001`
 - Title: `Shell Base, Bóveda de Identidad (Brand Vault), SQLite Core y Contrato del Orquestador`
-- Status: `draft`
+- Status: `approved`
 - Owner: `jaymusicmachine`
 - Spec owner slice: `epic/jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator`
 - Created: `2026-09-07`
@@ -34,13 +34,22 @@ timestamp: 2026-09-07T00:00:00Z
 ## Story Index
 | Story ID | Title | RFC File | Status | PR | Notes |
 | --- | --- | --- | --- | --- | --- |
-| STORY-001-01 | Kickoff y Sustrato Determinista | `STORY-001-01-kickoff.md` | `draft` | `TBD` | Hito 1.A de la Épica 1 |
+| STORY-001-01 | Esquema Relacional SQLite Core y Outbox Queue | `STORY-001-01-sqlite-core-outbox.md` | `approved` | `TBD` | HU-1.6 (Sustrato persistente) |
+| STORY-001-02 | BYOK Keyring Seguro y Motor de Verificación de Cuotas | `STORY-001-02-byok-keyring-health.md` | `approved` | `TBD` | HU-1.3, HU-1.5 (Seguridad) |
+| STORY-001-03 | Entidades de Dominio y UI CRUD del Brand Vault | `STORY-001-03-brand-vault-crud.md` | `approved` | `TBD` | HU-1.1 (Modelado de marca) |
+| STORY-001-04 | Registro Unificado de Proveedores de IA (AiProviderRegistry) | `STORY-001-04-ai-provider-registry.md` | `approved` | `TBD` | AI Core sobre Vercel AI SDK |
+| STORY-001-05 | Protocolo de Acciones (Tool Calling), Guardrails y Action Log | `STORY-001-05-tool-calling-guardrails.md` | `approved` | `TBD` | HU-6.3 (Seguridad operativa) |
+| STORY-001-06 | Entrevista Socrática de Marca y Asistente Lateral (Sidebar v1) | `STORY-001-06-socratic-interview-sidebar.md` | `approved` | `TBD` | HU-1.2, HU-6.1 v1 (Interacción) |
 
 ## Decision Log
 | Date | Story | Decision | Owner | Link |
 | --- | --- | --- | --- | --- |
-| 2026-09-07 | STORY-001-01 | Descartar Plane e implementar SQLite nativo local en Tauri/Next.js con Outbox Pattern | jaymusicmachine | [STORY-001-01-kickoff.md](./STORY-001-01-kickoff.md) |
-| 2026-09-07 | STORY-001-01 | Adoptar Vercel AI SDK Core como abstracción unificada para el AiProviderRegistry multi-modelo | jaymusicmachine | [STORY-001-01-kickoff.md](./STORY-001-01-kickoff.md) |
+| 2026-09-07 | STORY-001-01 | Descartar Plane e implementar SQLite nativo local en Tauri/Next.js con Outbox Pattern | jaymusicmachine | [STORY-001-01-sqlite-core-outbox.md](./STORY-001-01-sqlite-core-outbox.md) |
+| 2026-09-07 | STORY-001-02 | Adoptar OS Keychain con fallback AES-256-GCM para CI en lugar de texto plano | jaymusicmachine | [STORY-001-02-byok-keyring-health.md](./STORY-001-02-byok-keyring-health.md) |
+| 2026-09-07 | STORY-001-03 | Usar input nativo de color HTML5 + regex Zod sin paquetes de picker de terceros | jaymusicmachine | [STORY-001-03-brand-vault-crud.md](./STORY-001-03-brand-vault-crud.md) |
+| 2026-09-07 | STORY-001-04 | Reutilizar `@ai-sdk/openai` con baseURL custom para Groq en vez de SDK adicional | jaymusicmachine | [STORY-001-04-ai-provider-registry.md](./STORY-001-04-ai-provider-registry.md) |
+| 2026-09-07 | STORY-001-05 | Exigir confirmación modal interactiva previa para toda tool destructiva o de presupuesto | jaymusicmachine | [STORY-001-05-tool-calling-guardrails.md](./STORY-001-05-tool-calling-guardrails.md) |
+| 2026-09-07 | STORY-001-06 | Delegar gestión de mensajes y streaming al hook oficial `useChat` de `ai/react` | jaymusicmachine | [STORY-001-06-socratic-interview-sidebar.md](./STORY-001-06-socratic-interview-sidebar.md) |
 
 ## Risks and Dependencies
 - Risks: Variaciones de compatibilidad en el OS Keychain (`keyring-rs`) entre macOS, Linux y Windows en desarrollo headless/CI.
@@ -48,8 +57,8 @@ timestamp: 2026-09-07T00:00:00Z
 - Mitigations: Implementar un adaptador de fallback cifrado con clave derivada de entorno en entornos CI/headless donde el Keychain del SO no esté presente.
 
 ## Open Questions
-- [ ] ¿Cómo gestionar la migración automática de esquemas SQLite en actualizaciones de la app Tauri? (Se propone ejecutar migraciones DDL secuenciales en el inicio de la app).
-- [ ] ¿Cuál será el modelo por defecto sugerido en el wizard si el usuario configura múltiples llaves? (Se propone Gemini / Claude como primarios para razonamiento socrático).
+- [x] ¿Cómo gestionar la migración automática de esquemas SQLite en actualizaciones de la app Tauri? -> *Resuelto: Migrador DDL lineal en el inicio de la app.*
+- [x] ¿Cuál será el modelo por defecto sugerido en el wizard si el usuario configura múltiples llaves? -> *Resuelto: Gemini 2.0 Flash / Claude 3.7 como primarios.*
 
 ## Traceability
 - Issue(s): `EPIC-01`
