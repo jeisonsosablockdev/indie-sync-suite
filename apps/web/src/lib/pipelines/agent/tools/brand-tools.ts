@@ -111,3 +111,21 @@ export function createActualizarMarcaArtistaTool(
     },
   };
 }
+
+/**
+ * Creates all standard brand tools bundled into a list.
+ *
+ * @param artistRepo - Repository for artist profile persistence.
+ * @param labelRepo - Repository for label brand profile persistence.
+ * @returns Array of operational brand tools.
+ */
+export function createBrandTools(
+  artistRepo: SqliteArtistRepository,
+  labelRepo: SqliteLabelRepository
+): ToolDefinition<any, any>[] {
+  return [
+    createConsultarMarcaTool(artistRepo, labelRepo),
+    createCrearArtistaTool(artistRepo),
+    createActualizarMarcaArtistaTool(artistRepo),
+  ];
+}
