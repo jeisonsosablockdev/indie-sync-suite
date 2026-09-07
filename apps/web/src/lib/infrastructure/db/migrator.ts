@@ -82,3 +82,14 @@ export class SqliteMigrator {
     return newlyApplied;
   }
 }
+
+/**
+ * Convenience helper function to run migrations on a DatabaseSync instance.
+ *
+ * @param db - DatabaseSync instance
+ * @param migrationsDir - Optional custom migrations directory
+ * @returns Array of newly applied migration file names
+ */
+export function runMigrations(db: DatabaseSync, migrationsDir?: string): string[] {
+  return new SqliteMigrator(db, migrationsDir).runMigrations();
+}
