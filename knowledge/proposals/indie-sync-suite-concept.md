@@ -29,16 +29,20 @@ La plataforma unifica en un solo entorno de trabajo las tareas fragmentadas que 
 
 ## 2. Estrategia de Código Abierto e Integración de Ecosistema
 
-Para acelerar el desarrollo sin reinventar la rueda, la suite adopta e integra paradigmas probados de proyectos open-source líderes bajo una **topología híbrida pragmática** (Aplicación de escritorio nativa en **Tauri** para el Sello/Manager + Servicio en la nube para distribución 24/7 y colaboración):
+Para acelerar el desarrollo sin reinventar la rueda, la suite adopta e integra paradigmas probados de proyectos open-source líderes bajo una **topología híbrida pragmática** (Aplicación de escritorio nativa en **Tauri** para el Sello/Manager + Servicio en la nube para distribución 24/7 y colaboración).
+
+> [!IMPORTANT]
+> **Descarte de Plane como dependencia de código:** Inicialmente se evaluó `makeplane/plane` para la gestión de proyectos. No obstante, su infraestructura (12 contenedores Docker, Django/Python, Celery, RabbitMQ, Redis, PostgreSQL y microservicios Live) representa una sobrecarga técnica inviable para una app de escritorio ligera.  
+> Por lo tanto, **el repositorio de Plane se descarta como código importado**. En su lugar, el **Motor de Planificación y Gestión se construye 100% nativo y ligero en Next.js + SQLite/Tauri** (estableciendo su base de datos y modelo de entidades en la **Épica 1**).  
+> 
+> Los **únicos dos proyectos de código abierto que se clonan, importan y ejecutan como código** son:
 
 | Base de Referencia / Fork | Módulo en Indie-Sync Suite | Adaptaciones y Responsabilidad Específica |
 | :--- | :--- | :--- |
-| [**Plane**](https://github.com/makeplane/plane) (`makeplane/plane`) | **Motor de Planificación y Gestión de Lanzamientos** | Conversión de sprints y epics en fases musicales (Pre-save, Release Day, Post-lanzamiento), gestión de dependencias duras (gatekeepers de máster y pitching) y vistas simplificadas RBAC integradas de forma nativa y ligera en la app de Tauri. |
-| [**Open Generative AI**](https://github.com/anil-matcha/open-generative-ai) (`anil-matcha/open-generative-ai`) | **Pipeline Creativo Multimedia & Núcleo BYOK** | Bóveda centralizada de credenciales (BYOK), inyección obligatoria del Brand Vault en system prompts, presets de resolución para la industria (1:1 a 3000px, 9:16 Canvas/Reels, 16:9 Banners) y generación en lote. |
-| [**Postiz**](https://github.com/gitroomhq/postiz-app) (`gitroomhq/postiz-app`) | **Distribución Multicanal & Pauta Programática** | Conexión con la bandeja de creativos aprobados, programación de publicaciones vinculada a hitos del cronograma, ejecución de microcampañas ($20–$100 USD) y lectura de métricas orgánicas/pagas desde un servicio headless en la nube. |
+| [**Open Generative AI**](https://github.com/anil-matcha/open-generative-ai) (`anil-matcha/open-generative-ai`) | **Pipeline Creativo Multimedia & Núcleo BYOK** | Clonado e integrado en la app de escritorio. Bóveda centralizada de credenciales (BYOK), inyección obligatoria del Brand Vault en system prompts, presets de resolución para la industria (1:1 a 3000px, 9:16 Canvas/Reels, 16:9 Banners) y generación en lote. |
+| [**Postiz**](https://github.com/gitroomhq/postiz-app) (`gitroomhq/postiz-app`) | **Distribución Multicanal & Pauta Programática** | Desplegado como microservicio headless en la nube. Conexión con la bandeja de creativos aprobados, programación de publicaciones vinculada a hitos del cronograma, ejecución de microcampañas ($20–$100 USD) y lectura de métricas orgánicas/pagas. |
 
-### Repositorios de Referencia
-- **Plane**: [https://github.com/makeplane/plane](https://github.com/makeplane/plane) — Motor moderno de gestión de proyectos y planificación de tareas (sprints, ciclos y vistas Kanban/Timeline).
+### Repositorios de Referencia Importados
 - **Open Generative AI**: [https://github.com/anil-matcha/open-generative-ai](https://github.com/anil-matcha/open-generative-ai) — Pipeline generativo multi-proveedor con integración de modelos de texto, imagen y video bajo enfoque BYOK.
 - **Postiz**: [https://github.com/gitroomhq/postiz-app](https://github.com/gitroomhq/postiz-app) — Plataforma de automatización de programación de contenidos en redes sociales y orquestación de publicaciones.
 
@@ -65,7 +69,9 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
 
 ---
 
-## 5. Módulo de Planificación de Lanzamientos (Motor Musical Adaptado)
+## 5. Módulo de Planificación de Lanzamientos (Motor Musical Nativo en SQLite)
+
+> **Arquitectura Nativa:** Al descartarse el backend de Plane, este módulo opera directamente sobre el esquema relacional local en **SQLite + Rust IPC** implementado en la **Épica 1**, garantizando cero latencia, portabilidad y funcionamiento offline sin necesidad de contenedores Docker ni servidores de base de datos externos.
 
 - **Arquetipos de Lanzamiento:** Flujos de trabajo preconfigurados según el formato:
   - Single Debut
@@ -170,6 +176,16 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
   1. Ofrece un botón de "Probar Conexión" por cada credencial registrada.
   2. Muestra indicadores visuales de estado (Verde = Activa/Con saldo, Amarillo = Cuota baja, Rojo = Error/Invalida).
   3. Registra logs de error detallados sin exponer el valor de la clave en texto plano.
+
+#### HU-1.6: Esquema Relacional Base de Lanzamientos y Tareas (Fundamento Nativo sin Plane)
+- **Como** Desarrollador y Label Manager,
+- **Quiero** disponer de un modelo de datos relacional local (SQLite en Tauri) que gestione la jerarquía completa de `Sello` $\rightarrow$ `Artista` $\rightarrow$ `Lanzamiento` $\rightarrow$ `Fases (Pre, Live, Post)` $\rightarrow$ `Hitos / Tareas` y `Enlaces de Audio Externos`,
+- **Para que** la aplicación disponga de una estructura de persistencia local, reactiva y autónoma para gestionar el ciclo de vida del lanzamiento sin depender de la infraestructura pesada de Plane.
+- **Criterios de Aceptación:**
+  1. Define y migra el esquema relacional en SQLite con integridad referencial completa para Sellos, Artistas, Lanzamientos, Fases, Tareas y Enlaces externos.
+  2. Provee operaciones CRUD locales optimizadas con latencia cero a través de Rust IPC en Tauri.
+  3. Modela el árbol de dependencias básicas (tarea padre, tareas hijas, hitos bloqueantes) listo para ser consumido por el planificador visual y el orquestador.
+  4. Almacena metadatos del lanzamiento (ISRC, UPC, fecha objetivo, enlaces a masters en Drive/Dropbox/Disco) de forma estructurada.
 
 ---
 
@@ -426,19 +442,21 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
 
 ## 12. Roadmap y Secuencia de Implementación (Build-First)
 
-Esta sección organiza las **31 Historias de Usuario** en **fases de construcción secuencial e incremental**, estructuradas a partir de la importación y adaptación de los módulos de código abierto, evitando la construcción redundante de componentes ya resueltos.
+Esta sección organiza las **32 Historias de Usuario** en **fases de construcción secuencial e incremental**, estructuradas a partir de la importación y adaptación de los módulos de código abierto y la construcción nativa del núcleo que sustituye a Plane.
 
 ### 12.1 Principios de Secuenciación
 
 1. **Reutilización Real de Credenciales (Sin Reconstruir la Rueda):**
    - **Modelos Generativos:** `Open Generative AI` ya incluye el gateway multi-modelo y la ingesta de API keys (vía Muapi o directas). No se construye un backend de bóveda desde cero; se expone su gestión a través de la UI de Tauri y se persiste de forma segura en el Keychain del sistema.
    - **Autenticación Social y Anuncios:** `Postiz` ya resuelve de forma nativa los flujos OAuth 2.0 y el manejo de tokens con Meta, TikTok, YouTube, X y LinkedIn. La suite se limita a invocar y unificar esta capa visualmente.
-2. **Orquestación Transversal (Épica 6 Distribuida):**
+2. **Construcción Nativa del Motor de Proyectos (Sustituto de Plane):**
+   - Al descartarse Plane por inviabilidad de infraestructura (12 contenedores), la base relacional de proyectos, fases, tareas y enlaces externos se construye de forma 100% nativa y ligera sobre SQLite en Tauri desde la **Épica 1** (`HU-1.6`).
+3. **Orquestación Transversal (Épica 6 Distribuida):**
    - La capa de orquestación ya **no se posterga como un bloque final aislado**. 
    - El catálogo de herramientas ejecutables (*tool calling* y guardrails de `HU-6.3`) se define en la fase inicial como contrato de integración.
    - El asistente lateral (`HU-6.1`) se activa tempranamente y va incorporando nuevas *tools* a medida que cada módulo funcional (Brand Vault, Planificador, Creativo, Distribución) entra en operación.
-3. **Flujo de Ejecución por Módulo:**
-   $$\text{Importar/Fork Base OS} \longrightarrow \text{Adaptar al Dominio Musical} \longrightarrow \text{Conectar al Orquestador} \longrightarrow \text{Siguiente Módulo}$$
+4. **Flujo de Ejecución por Módulo:**
+   $$\text{Importar Base OS / Crear Base Nativa} \longrightarrow \text{Adaptar al Dominio Musical} \longrightarrow \text{Conectar al Orquestador} \longrightarrow \text{Siguiente Módulo}$$
 
 ---
 
@@ -447,10 +465,10 @@ Esta sección organiza las **31 Historias de Usuario** en **fases de construcci�
 ```
 Fase 0               Fase 1                  Fase 2               Fase 3
 ┌─────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
-│ Tauri Shell  │  │ Fork Open Gen AI │  │ Modelo de Plane  │  │ Adaptar pipeline │
-│ Key UI / Byok│→│ Brand Vault CRUD │→│ Motor Planif.    │→│ al dominio       │
-│ Tool Catalog │  │ Sidebar v1       │  │ Arquetipos+Deps  │  │ Brand Injection  │
-│  (Contrato)  │  │                  │  │ RBAC + Sidebar v2│  │ Batching+Gallery │
+│ Tauri Shell  │  │ Fork Open Gen AI │  │ UI Planificador  │  │ Adaptar pipeline │
+│ Key UI / Byok│→│ Brand Vault CRUD │→│ Timeline/Gantt   │→│ al dominio       │
+│ Tool Catalog │  │ SQLite Release/  │  │ Arquetipos+Deps  │  │ Brand Injection  │
+│  (Contrato)  │  │ Tasks (HU-1.6)   │  │ RBAC + Sidebar v2│  │ Batching+Gallery │
 └─────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘
                                                                        │
                          ┌─────────────────────────────────────────────┘
@@ -465,19 +483,20 @@ Fase 0               Fase 1                  Fase 2               Fase 3
 ```
 
 #### Fase 0 · Shell Base, Contrato del Orquestador y Exposición de Credenciales
-- **Infraestructura Base:** Inicialización del proyecto de escritorio con Tauri + Next.js 16 (layout base, navegación y Tailwind CSS).
+- **Infraestructura Base:** Inicialización del proyecto de escritorio con Tauri + Next.js 16 (layout base, navegación, motor SQLite local y Tailwind CSS).
 - **HU-1.3 & HU-1.5 (Credenciales & Health Check):** Conexión de la UI de configuración con el Keychain local de Tauri para almacenar y verificar el estado de las API keys sin desarrollar microservicios propietarios de custodia.
 - **HU-6.3 (Tool Calling & Guardrails - Contrato Base):** Definición del esquema inicial de tools ejecutables, modal de confirmación para acciones críticas y registro de auditoría (*action log*).
 
-#### Fase 1 · Brand Vault & Activación del Asistente (Importación Open Generative AI)
+#### Fase 1 · Brand Vault, Esquema Base de Lanzamientos y Activación del Asistente
 - **Integración Inicial:** Fork/clon de `Open Generative AI` e integración de su pipeline local en el workspace.
 - **HU-1.1 (Bóveda del Sello y Artista):** Modelo de datos Label $\rightarrow$ Artist (paletas, tipografías, bio, LoRAs).
 - **HU-1.2 (Entrevista Guiada Socrática):** Onboarding conversacional adaptativo para autogenerar el BrandContextDocument.
 - **HU-1.4 (Ficha Conceptual del Lanzamiento - Contexto Nivel 3):** Creación de ficha por track/álbum con herencia automática y snapshot inmutable.
-- **HU-6.1 (Asistente Lateral v1):** Activación del chat lateral con capacidad para leer y modificar el Brand Vault en lenguaje natural.
+- **HU-1.6 (Esquema Relacional Base de Lanzamientos y Tareas):** Modelado y migración en SQLite de la jerarquía completa de Lanzamientos, Fases, Tareas, Dependencias y Enlaces a masters externos (la base nativa que reemplaza a Plane).
+- **HU-6.1 (Asistente Lateral v1):** Activación del chat lateral con capacidad para leer y modificar el Brand Vault y consultar releases en lenguaje natural.
 
-#### Fase 2 · Motor de Planificación Musical (Absorción Conceptual de Plane)
-- **Diseño del Motor:** Modelado nativo del ciclo musical (Arquetipos $\rightarrow$ Fases Pre/Live/Post $\rightarrow$ Tareas $\rightarrow$ Dependencias) basado en los conceptos de Plane.
+#### Fase 2 · Motor Visual de Planificación Musical (Nativo en SQLite/Tauri)
+- **Construcción Visual:** Implementación de la vista de cronograma y árbol de tareas conectada directamente a la base SQLite de la Fase 1.
 - **HU-2.1 (Creación de Lanzamiento por Arquetipo):** Plantillas de Single, EP, Álbum y Remix con distribución de calendario.
 - **HU-2.4 (Registro y Validación de Enlaces a Audio):** Vinculación sin subida de archivos (Drive, Dropbox, Disco.ac) y validación de enlace.
 - **HU-2.2 (Alertas de Hitos Bloqueantes - Gatekeepers):** Dependencias duras (Master $\rightarrow$ Distribución $\rightarrow$ Pitching) con alertas visuales.
