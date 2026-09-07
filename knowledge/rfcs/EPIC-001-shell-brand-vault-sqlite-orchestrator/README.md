@@ -34,22 +34,23 @@ timestamp: 2026-09-07T00:00:00Z
 ## Story Index
 | Story ID | Title | RFC File | Status | PR | Notes |
 | --- | --- | --- | --- | --- | --- |
-| STORY-001-01 | Esquema Relacional SQLite Core y Outbox Queue | `STORY-001-01-sqlite-core-outbox.md` | `approved` | `TBD` | HU-1.6 (Sustrato persistente) |
-| STORY-001-02 | BYOK Keyring Seguro y Motor de Verificación de Cuotas | `STORY-001-02-byok-keyring-health.md` | `approved` | `TBD` | HU-1.3, HU-1.5 (Seguridad) |
-| STORY-001-03 | Entidades de Dominio y UI CRUD del Brand Vault | `STORY-001-03-brand-vault-crud.md` | `approved` | `TBD` | HU-1.1 (Modelado de marca) |
-| STORY-001-04 | Registro Unificado de Proveedores de IA (AiProviderRegistry) | `STORY-001-04-ai-provider-registry.md` | `approved` | `TBD` | AI Core sobre Vercel AI SDK |
-| STORY-001-05 | Protocolo de Acciones (Tool Calling), Guardrails y Action Log | `STORY-001-05-tool-calling-guardrails.md` | `approved` | `TBD` | HU-6.3 (Seguridad operativa) |
-| STORY-001-06 | Entrevista Socrática de Marca y Asistente Lateral (Sidebar v1) | `STORY-001-06-socratic-interview-sidebar.md` | `approved` | `TBD` | HU-1.2, HU-6.1 v1 (Interacción) |
+| STORY-001-01 | HU-1.1 Configuración Bóveda Sello y Artista | `STORY-001-01-hu-1-1-brand-vault-setup.md` | `approved` | `TBD` | Brand Vault CRUD |
+| STORY-001-02 | HU-1.2 Entrevista Guiada de Contexto | `STORY-001-02-hu-1-2-brand-interview.md` | `approved` | `TBD` | Brand Interview Socrático |
+| STORY-001-03 | HU-1.3 Gestión Segura de Credenciales (BYOK) | `STORY-001-03-hu-1-3-byok-credentials.md` | `approved` | `TBD` | OS Keychain & Fallback |
+| STORY-001-04 | HU-1.5 Verificación de Estado y Cuotas BYOK | `STORY-001-04-hu-1-5-byok-health-quotas.md` | `approved` | `TBD` | Health Checks & Rate Limits |
+| STORY-001-05 | HU-1.6 Esquema SQLite Core y Outbox Queue | `STORY-001-05-hu-1-6-sqlite-core-outbox.md` | `approved` | `TBD` | Persistencia Relacional Local |
+| STORY-001-06 | HU-6.3 Tool Calling, Guardrails y Action Log | `STORY-001-06-hu-6-3-tool-calling-guardrails.md` | `approved` | `TBD` | Human-in-the-Loop & Audit Log |
+| STORY-001-07 | HU-6.1 (v1) Asistente Lateral Operativo | `STORY-001-07-hu-6-1-sidebar-assistant-v1.md` | `approved` | `TBD` | Sidebar con Tools de Marca |
 
 ## Decision Log
 | Date | Story | Decision | Owner | Link |
 | --- | --- | --- | --- | --- |
-| 2026-09-07 | STORY-001-01 | Descartar Plane e implementar SQLite nativo local en Tauri/Next.js con Outbox Pattern | jaymusicmachine | [STORY-001-01-sqlite-core-outbox.md](./STORY-001-01-sqlite-core-outbox.md) |
-| 2026-09-07 | STORY-001-02 | Adoptar OS Keychain con fallback AES-256-GCM para CI en lugar de texto plano | jaymusicmachine | [STORY-001-02-byok-keyring-health.md](./STORY-001-02-byok-keyring-health.md) |
-| 2026-09-07 | STORY-001-03 | Usar input nativo de color HTML5 + regex Zod sin paquetes de picker de terceros | jaymusicmachine | [STORY-001-03-brand-vault-crud.md](./STORY-001-03-brand-vault-crud.md) |
-| 2026-09-07 | STORY-001-04 | Reutilizar `@ai-sdk/openai` con baseURL custom para Groq en vez de SDK adicional | jaymusicmachine | [STORY-001-04-ai-provider-registry.md](./STORY-001-04-ai-provider-registry.md) |
-| 2026-09-07 | STORY-001-05 | Exigir confirmación modal interactiva previa para toda tool destructiva o de presupuesto | jaymusicmachine | [STORY-001-05-tool-calling-guardrails.md](./STORY-001-05-tool-calling-guardrails.md) |
-| 2026-09-07 | STORY-001-06 | Delegar gestión de mensajes y streaming al hook oficial `useChat` de `ai/react` | jaymusicmachine | [STORY-001-06-socratic-interview-sidebar.md](./STORY-001-06-socratic-interview-sidebar.md) |
+| 2026-09-07 | STORY-001-05 | Descartar Plane e implementar SQLite nativo local en Tauri/Next.js con Outbox Pattern | jaymusicmachine | [STORY-001-05-hu-1-6-sqlite-core-outbox.md](./STORY-001-05-hu-1-6-sqlite-core-outbox.md) |
+| 2026-09-07 | STORY-001-03 | Adoptar OS Keychain con fallback AES-256-GCM para CI en lugar de texto plano | jaymusicmachine | [STORY-001-03-hu-1-3-byok-credentials.md](./STORY-001-03-hu-1-3-byok-credentials.md) |
+| 2026-09-07 | STORY-001-01 | Usar input nativo de color HTML5 + regex Zod sin paquetes de picker de terceros | jaymusicmachine | [STORY-001-01-hu-1-1-brand-vault-setup.md](./STORY-001-01-hu-1-1-brand-vault-setup.md) |
+| 2026-09-07 | STORY-001-04 | Sondeo lightweight HTTP con timeout de 3500ms para no consumir tokens en health checks | jaymusicmachine | [STORY-001-04-hu-1-5-byok-health-quotas.md](./STORY-001-04-hu-1-5-byok-health-quotas.md) |
+| 2026-09-07 | STORY-001-06 | Exigir confirmación modal interactiva previa para toda tool destructiva o de presupuesto | jaymusicmachine | [STORY-001-06-hu-6-3-tool-calling-guardrails.md](./STORY-001-06-hu-6-3-tool-calling-guardrails.md) |
+| 2026-09-07 | STORY-001-07 | Delegar gestión de mensajes y streaming al hook oficial `useChat` de `ai/react` | jaymusicmachine | [STORY-001-07-hu-6-1-sidebar-assistant-v1.md](./STORY-001-07-hu-6-1-sidebar-assistant-v1.md) |
 
 ## Risks and Dependencies
 - Risks: Variaciones de compatibilidad en el OS Keychain (`keyring-rs`) entre macOS, Linux y Windows en desarrollo headless/CI.
