@@ -17,7 +17,7 @@ const execFileAsync = promisify(execFile);
 const { Client } = pg;
 
 const APP_HOST = "127.0.0.1";
-const APP_PORT = 3001;
+const APP_PORT = process.env.APP_PORT ? Number(process.env.APP_PORT) : 3009;
 const CDN_WEBHOOK_PORT = 3999;
 const QSTASH_SHIM_PORT = 3998;
 const CDN_URL_MAP_NAME = "metaplex-admin-assets-map";
