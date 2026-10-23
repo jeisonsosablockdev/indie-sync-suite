@@ -79,6 +79,12 @@ export function createReleaseConceptRepository(db: DatabaseSync): ReleaseConcept
     },
 
     freezeSnapshot: async (releaseId: string): Promise<void> => {
+      // Step 1: Invariant check - concept must exist to be frozen
+      const existing = await createReleaseConceptRepository(db).findByReleaseId(releaseId);
+      if (!existing) {
+        throw new Error(`Release concept not found: No se puede congelar un concepto inexistente para el release ${releaseId}.`);
+      }
+
       const stmt = db.prepare(`
         UPDATE release_concepts
         SET snapshot_frozen = 1,
