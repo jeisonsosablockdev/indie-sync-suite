@@ -14,6 +14,8 @@ fi
 DEFAULT_TITLE="refactor(monorepo): Monorepo Workspaces & 4-Layer Feature-Driven Design (FDD) Architecture (${ISSUE_ID})"
 if [[ "${ISSUE_ID}" == "ISS-001" ]]; then
   DEFAULT_TITLE="docs(spec): initial setup and product specification V3.2 for Indie-Sync Suite (${ISSUE_ID})"
+elif [[ "${BRANCH}" == *"EPIC-01"* || "${ISSUE_ID}" == *"EPIC-01"* || "${BRANCH}" == *"epic"* ]]; then
+  DEFAULT_TITLE="feat(epic-01): Shell Base, Bóveda de Identidad (Brand Vault), SQLite Core y Contrato del Orquestador"
 fi
 TITLE="${PR_TITLE:-${DEFAULT_TITLE}}"
 CURRENT_SHA="$(git -C "${ROOT_DIR}" rev-parse HEAD)"
@@ -44,14 +46,14 @@ if [[ "${ISSUE_ID}" == "ISS-001" ]]; then
   RISK_LABEL="risk:low"
 elif [[ "${BRANCH}" == *"solana"* || "${BRANCH}" == *"program"* ]]; then
   SCOPE_LABEL="scope:program"
-elif [[ "${BRANCH}" == *"app"* || "${BRANCH}" == *"frontend"* || "${BRANCH}" == *"monorepo"* ]]; then
+elif [[ "${BRANCH}" == *"app"* || "${BRANCH}" == *"frontend"* || "${BRANCH}" == *"monorepo"* || "${BRANCH}" == *"epic"* ]]; then
   SCOPE_LABEL="scope:app"
 elif [[ "${BRANCH}" == *"nft"* ]]; then
   SCOPE_LABEL="scope:nft"
 fi
 
 if [[ "${ISSUE_ID}" != "ISS-001" ]]; then
-  if [[ "${BRANCH}" == *"feature"* ]]; then
+  if [[ "${BRANCH}" == *"feature"* || "${BRANCH}" == *"epic"* ]]; then
     TYPE_LABEL="type:feature"
   elif [[ "${BRANCH}" == *"fix"* || "${BRANCH}" == *"bugfix"* ]]; then
     TYPE_LABEL="type:fix"
