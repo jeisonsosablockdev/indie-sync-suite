@@ -2,8 +2,19 @@
 const fsSync = require("node:fs");
 const fs = require("node:fs/promises");
 const path = require("node:path");
-const { execFileSync } = require("node:child_process");
-const { Pool } = require("pg");
+function getPgPool() {
+  try {
+    const { Pool } = require("pg");
+    return new Pool({ connectionString: requireDatabaseUrl() });
+  } catch (error) {
+    if (error && error.code === "MODULE_NOT_FOUND") {
+      throw new Error(
+        "The 'pg' package is not installed. PostgreSQL migrations require 'pg'. If you are using SQLite offline-first, do not set DATABASE_URL."
+      );
+    }
+    throw error;
+  }
+}
 
 const MIGRATIONS_DIR = path.resolve(process.cwd(), "apps", "web", "src", "features", "shared", "infrastructure", "db", "migrations");
 const explicitEnvKeys = new Set(Object.keys(process.env));
@@ -193,7 +204,7 @@ function logSkippedUntrackedMigrations(skippedUntracked) {
 }
 
 async function runMigrations() {
-  const pool = new Pool({ connectionString: requireDatabaseUrl() });
+  const pool = getPgPool();
   const client = await pool.connect();
 
   try {
@@ -235,7 +246,7 @@ async function runMigrations() {
 }
 
 async function checkPendingMigrations() {
-  const pool = new Pool({ connectionString: requireDatabaseUrl() });
+  const pool = getPgPool();
   const client = await pool.connect();
 
   try {

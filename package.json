@@ -7,9 +7,9 @@
   },
   "scripts": {
     "predev": "node ./scripts/db-migrate-if-configured.js",
-    "dev": "next dev apps/web -p 3001 --webpack",
+    "dev": "next dev apps/web -p 3009 --webpack",
     "predev:turbo": "node ./scripts/db-migrate-if-configured.js",
-    "dev:turbo": "next dev apps/web -p 3001 --turbo",
+    "dev:turbo": "next dev apps/web -p 3009 --turbo",
     "build": "next build apps/web --webpack",
     "start": "next start apps/web",
     "db:migrate": "node ./scripts/db-migrate.js",

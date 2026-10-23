@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   // Step 1: Wrap app contents in HTML shell with dark theme and providers
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body className="bg-neutral-950 text-neutral-100 antialiased selection:bg-blue-500 selection:text-white">
         <Providers>{children}</Providers>
       </body>

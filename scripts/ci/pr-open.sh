@@ -122,6 +122,8 @@ fi
 
 MAX_ADDITIONS="$(node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync(process.argv[1],'utf8'));process.stdout.write(String(p.thresholds.maxAddedLines));" "$POLICY_FILE")"
 SIZE_EXEMPT_LABEL="$(node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync(process.argv[1],'utf8'));process.stdout.write(p.labels.sizeExempt);" "$POLICY_FILE")"
+MAX_BRANCH_AGE_DAYS="$(node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync(process.argv[1],'utf8'));process.stdout.write(String(p.thresholds.maxBranchAgeDays));" "$POLICY_FILE")"
+BRANCH_AGE_EXEMPT_LABEL="$(node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync(process.argv[1],'utf8'));process.stdout.write(p.labels.branchAgeExempt);" "$POLICY_FILE")"
 
 MERGE_BASE="$(git merge-base "origin/${BASE_REF}" HEAD)"
 ADDITIONS="$(git diff --numstat "${MERGE_BASE}..HEAD" | awk '{a+=$1} END {print a+0}')"
@@ -134,6 +136,15 @@ if [[ -z "$SIZE_EXEMPT" ]]; then
   fi
 fi
 
+FIRST_COMMIT_EPOCH="$(git log --reverse -n 1 --format='%ct' "${MERGE_BASE}..HEAD")"
+NOW_EPOCH="$(date +%s)"
+AGE_DAYS="$(awk -v now="${NOW_EPOCH}" -v first="${FIRST_COMMIT_EPOCH}" 'BEGIN {printf "%.2f", (now-first)/86400}')"
+TOO_OLD="$(awk -v age="${AGE_DAYS}" -v max="${MAX_BRANCH_AGE_DAYS}" 'BEGIN {print (age>max) ? "1" : "0"}')"
+BRANCH_AGE_EXEMPT="0"
+if [[ "${TOO_OLD}" == "1" ]]; then
+  BRANCH_AGE_EXEMPT="1"
+fi
+
 bash ./scripts/ci/pr-metadata-lint.sh \
   --base "$BASE_REF" \
   --body-file "$BODY_FILE" \
@@ -144,9 +155,9 @@ bash ./scripts/ci/pr-metadata-lint.sh \
   --policy-file "$POLICY_FILE"
 
 if [[ "$SIZE_EXEMPT" == "1" ]]; then
-  LINEAR_AUTOSTATUS=0 SIZE_EXEMPT=1 pnpm pr:ready --base "$BASE_REF" --policy-file "$POLICY_FILE" --validate-mode "$VALIDATE_MODE"
+  LINEAR_AUTOSTATUS=0 SIZE_EXEMPT=1 BRANCH_AGE_EXEMPT="$BRANCH_AGE_EXEMPT" pnpm pr:ready --base "$BASE_REF" --policy-file "$POLICY_FILE" --validate-mode "$VALIDATE_MODE"
 else
-  LINEAR_AUTOSTATUS=0 pnpm pr:ready --base "$BASE_REF" --policy-file "$POLICY_FILE" --validate-mode "$VALIDATE_MODE"
+  LINEAR_AUTOSTATUS=0 BRANCH_AGE_EXEMPT="$BRANCH_AGE_EXEMPT" pnpm pr:ready --base "$BASE_REF" --policy-file "$POLICY_FILE" --validate-mode "$VALIDATE_MODE"
 fi
 
 git push -u origin "$CURRENT_BRANCH"
@@ -181,6 +192,9 @@ pnpm linear:issue-review || echo "ℹ️ Linear status sync skipped or unconfigu
 LABEL_ARGS=(-f "labels[]=${SCOPE_LABEL}" -f "labels[]=${TYPE_LABEL}" -f "labels[]=${RISK_LABEL}")
 if [[ "$SIZE_EXEMPT" == "1" ]]; then
   LABEL_ARGS+=(-f "labels[]=${SIZE_EXEMPT_LABEL}")
+fi
+if [[ "$BRANCH_AGE_EXEMPT" == "1" ]]; then
+  LABEL_ARGS+=(-f "labels[]=${BRANCH_AGE_EXEMPT_LABEL}")
 fi
 
 # Use gh api for labels to avoid pr edit GraphQL instability in some environments.
