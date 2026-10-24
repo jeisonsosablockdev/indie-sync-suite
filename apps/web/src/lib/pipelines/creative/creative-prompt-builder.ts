@@ -38,10 +38,11 @@ export function buildCreativePrompt(context: CreativeBrandContext): PromptBreakd
   // Step 1: Synthesize visual subject from release title and narrative
   const subject = `Music cover art representing "${context.releaseTitle}" by ${context.artistName}, evoking ${context.soundMood}. Narrative essence: ${context.narrative}`;
 
-  // Step 2: Determine aesthetic style anchored in artist genre and visual identity
+  // Step 2: Determine aesthetic style anchored in artist genre, visual identity, and label ethos
+  const ethosSegment = context.labelTone ? `, curatorial ethos: ${context.labelTone}` : '';
   const style = context.visualIdentity
-    ? `${context.genre} aesthetic with ${context.visualIdentity}`
-    : `${context.genre} album cover photography, artistic conceptual composition`;
+    ? `${context.genre} aesthetic with ${context.visualIdentity}${ethosSegment}`
+    : `${context.genre} album cover photography, artistic conceptual composition${ethosSegment}`;
 
   // Step 3: Establish lighting and camera parameters
   const lighting = 'dramatic cinematic lighting with balanced chiaroscuro highlights';

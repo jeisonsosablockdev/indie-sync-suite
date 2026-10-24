@@ -156,7 +156,10 @@ export function PromptStudioPanel({
             <span>Tokens estimados: ~{formattedOutput.estimatedTokens}</span>
             <span className="text-amber-400">{platformPreset}</span>
           </div>
-          <p className="whitespace-pre-wrap break-words leading-relaxed select-all">
+          <p
+            data-testid="formatted-prompt-output"
+            className="whitespace-pre-wrap break-words leading-relaxed select-all"
+          >
             {formattedOutput.compiledText}
           </p>
 
