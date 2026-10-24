@@ -72,19 +72,31 @@ Este Pull Request implementa la **Épica 2: Motor Visual de Planificación y Ges
 - DDL Migrations: Migración \`004_release_planner.sql\` ejecutada idempotentemente con claves foráneas e índices.
 - Criterios de Aceptación verificados y auditados bajo protocolo \`tdd-primal\` con calificación de 9.86/10.
 
-## Related Issues
-- Resolves EPIC-02
+## Issue
+- Issue link/id: [EPIC-02](https://linear.app/indie-suite/issue/EPIC-02)
 
-## RFC Traceability (RFC Docs)
-- Path to RFC markdown file under \`knowledge/rfcs/**/*.md\`: knowledge/rfcs/EPIC-002-release-planner-engine/README.md
+## RFC
+- RFC link/path: [knowledge/rfcs/EPIC-002-release-planner-engine/README.md](knowledge/rfcs/EPIC-002-release-planner-engine/README.md)
+- Decision status: approved
 
-## Manual Testing & Acceptance Evidence
-- Manual test results:
-  - Verificación de la suite completa de pruebas unitarias (\`pnpm test\`) y harness (\`pnpm test:harness\`).
-  - Verificación de tipos (\`pnpm typecheck\`) y linting (\`pnpm lint\`).
-  - Validación completa (\`pnpm validate\`).
-- Human Acceptance:
-  - Autorización explícita concedida por el usuario: "apruebo el Epic-2".
+## Riesgos
+- Main risks introduced by this PR: Ninguno en tiempo de ejecución. Todos los componentes y repositorios son aditivos y se integran local-first en SQLite y Next.js sin alterar las rutas existentes.
+- Security impact: Máxima protección con cliente HTTP anti-SSRF (bloqueo IPv4 RFC 1918, IPv6, loopback y cloud metadata), validación estricta de regex en ISRC/UPC y control de riesgo Tier 2 para tools de modificación.
+
+## Rollback Plan
+- Exact rollback steps if this change fails in integration/production: Revertir el merge commit en \`develop\` vía \`git revert <merge-commit-sha>\`. Las tablas de \`004_release_planner.sql\` son aisladas.
+
+## Prueba Devnet
+- Real transaction signature(s): N/A (Este PR implementa el motor de planificación musical y persistencia SQLite local-first).
+- On-chain state evidence used for verification: Validaciones de gobernanza, harness test suite y suite de pruebas SQLite/AI completadas.
+- Compilación de producción: Suite completa validada (\`pnpm validate\`), 42 archivos de test y 195 pruebas unitarias e integradas pasando al 100%.
+
+## Human Acceptance
+- Status: approved
+- Approved by: @jaymusicmachine
+- Manual test evidence:
+  - Suite completa de validación (\`pnpm validate\`) y 48 tests de gobernanza pasando 100% en verde.
+  - Aprobación explícita del usuario "apruebo el Epic-2" concedida.
 - Accepted residual risk: None
 
 ## Feature Note (/docs/features)
