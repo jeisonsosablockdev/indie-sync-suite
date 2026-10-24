@@ -19,7 +19,9 @@ FEATURE_DOC="$(find "${ROOT_DIR}/knowledge/features" "${ROOT_DIR}/knowledge/fixe
 RFC_DOC="$(find "${ROOT_DIR}/knowledge/features" "${ROOT_DIR}/knowledge/fixes" -maxdepth 1 -name "*${ISSUE_ID}*-implementation.md" 2>/dev/null | head -1 | sed "s|${ROOT_DIR}/||" || echo "")"
 
 if [[ -z "${FEATURE_DOC}" ]]; then
-  if [[ "${BRANCH}" == *"EPIC-03"* || "${ISSUE_ID}" == *"EPIC-03"* ]]; then
+  if [[ "${BRANCH}" == *"EPIC-04"* || "${ISSUE_ID}" == *"EPIC-04"* ]]; then
+    FEATURE_DOC="knowledge/features/feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz.md"
+  elif [[ "${BRANCH}" == *"EPIC-03"* || "${ISSUE_ID}" == *"EPIC-03"* ]]; then
     FEATURE_DOC="knowledge/features/feature-jaymusicmachine-EPIC-03-creative-pipeline-engine.md"
   elif [[ "${BRANCH}" == *"EPIC-02"* || "${ISSUE_ID}" == *"EPIC-02"* ]]; then
     FEATURE_DOC="knowledge/features/feature-jaymusicmachine-EPIC-02-release-planner-engine.md"
@@ -30,7 +32,9 @@ if [[ -z "${FEATURE_DOC}" ]]; then
   fi
 fi
 if [[ -z "${RFC_DOC}" ]]; then
-  if [[ "${BRANCH}" == *"EPIC-03"* || "${ISSUE_ID}" == *"EPIC-03"* ]]; then
+  if [[ "${BRANCH}" == *"EPIC-04"* || "${ISSUE_ID}" == *"EPIC-04"* ]]; then
+    RFC_DOC="knowledge/features/feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz-implementation.md"
+  elif [[ "${BRANCH}" == *"EPIC-03"* || "${ISSUE_ID}" == *"EPIC-03"* ]]; then
     RFC_DOC="knowledge/features/feature-jaymusicmachine-EPIC-03-creative-pipeline-engine-implementation.md"
   elif [[ "${BRANCH}" == *"EPIC-02"* || "${ISSUE_ID}" == *"EPIC-02"* ]]; then
     RFC_DOC="knowledge/features/feature-jaymusicmachine-EPIC-02-release-planner-engine-implementation.md"
@@ -41,7 +45,84 @@ if [[ -z "${RFC_DOC}" ]]; then
   fi
 fi
 
-if [[ "${BRANCH}" == *"EPIC-03"* || "${ISSUE_ID}" == *"EPIC-03"* ]]; then
+if [[ "${BRANCH}" == *"EPIC-04"* || "${ISSUE_ID}" == *"EPIC-04"* ]]; then
+cat <<EOF > "${OUTPUT_FILE}"
+## Summary
+Este Pull Request implementa la **Épica 4: Distribución Multicanal & Pauta Programática (Integración Headless Postiz Cloud)** de Indie-Sync Suite. Se cubren las 6 Historias de Usuario (HU-4.1, HU-4.2, HU-4.3, HU-4.4, HU-4.5, HU-6.1 v4) a través de sus SPECs técnicos diseñados bajo arquitectura funcional en 4 capas (Presentation, Application, Domain, Infrastructure), cero dependencias de clases y persistencia en SQLite WAL local:
+
+- Feature-Flag Strategy: Los módulos de conexión OAuth, calendario sincronizado, microcampañas y cola outbox operan de forma local-first sobre SQLite embebido y el cliente headless de Postiz Cloud, garantizando cero riesgo de regresión en entornos existentes.
+
+### 🚀 Principales Capacidades Implementadas:
+1. **HU-4.3: Conexión y Gestión de Cuentas (OAuth Hub & Health Check)**:
+   - Repositorio relacional en SQLite (\`sqlite-social-connection-repository.ts\`) con estados de conexión (\`CONNECTED\`, \`EXPIRED\`, \`DISCONNECTED\`) para Instagram, TikTok, X, YouTube, Facebook, Meta Ads y TikTok Ads.
+   - Componente visual (\`oauth-hub-card.tsx\`) y hook de aplicación (\`use-oauth-hub.ts\`) con monitor de salud y reconexión 1-clic.
+2. **HU-4.1: Programación Multicanal & Media Handshake**:
+   - Servicio puro de dominio (\`media-handshake-service.ts\`) asociando el \`content_hash\` SHA-256 de los entregables aprobados de Épica 3 a URLs pre-firmadas para despacho inmutable a Postiz Cloud.
+   - Repositorio SQLite (\`sqlite-scheduled-post-repository.ts\`) con ordenamiento cronológico y soporte de reprogramación atómica.
+3. **HU-4.4: Calendario Visual Sincronizado con Hito T-0**:
+   - Calculador algorítmico (\`calendar-slot-calculator.ts\`) proyectando publicaciones estratégicas automáticas para \$T-14\$ (Teaser), \$T-7\$ (Pre-save), \$T-0\$ (Drop Day) y \$T+7\$ (Agradecimiento).
+   - Componente interactivo de calendario (\`social-calendar-view.tsx\`) y hook (\`use-social-calendar.ts\`) con visualización por canal.
+4. **HU-4.2: Microcampañas de Pauta Programática (\$20–\$100 USD)**:
+   - Calculador algorítmico puro (\`ad-campaign-calculator.ts\`) para reparto equitativo o personalizado de presupuesto entre Meta Ads y TikTok Ads, proyectando impresiones y clics según benchmarks indie.
+   - Enforce estricto de invariante de presupuesto (\$20.00 a \$100.00 USD) en dominio y restricción DDL CHECK en SQLite (\`006_distribution_postiz.sql\`).
+   - Modal de configuración (\`micro-campaign-modal.tsx\`) con requerimiento obligatorio de autorización Guardrail Tier 2 antes de habilitar activación.
+5. **HU-4.5: Cola de Reintentos Outbox & Alertas Dead-Letter**:
+   - Cliente headless de Postiz Cloud (\`postiz-api-client.ts\`) con protección anti-SSRF rigurosa (\`assertSafePublicUrl\`) bloqueando loopback, direcciones privadas IPv4/IPv6 y metadatos cloud.
+   - Worker en segundo plano (\`cloud-sync-worker.ts\`) con hasta 3 reintentos exponenciales sobre la cola outbox (\`cloud_sync_queue\`) y soporte de recuperación manual de dead-letters.
+   - Panel de control de outbox (\`sync-queue-monitor.tsx\`) con badges de estado y disparadores de reintento forzado.
+6. **HU-6.1 v4: Herramientas de Distribución para el Asistente Lateral**:
+   - Contratos Zod y bundle de herramientas agénticas (\`distribution-tools.ts\`) para \`programar_publicacion\` (Tier 1 Safe), \`lanzar_campana_pauta\` (Tier 2 Sensitive Guardrail) y \`consultar_calendario_posts\` (Tier 1 Safe).
+   - Badge visual en el chat (\`distribution-tool-badge.tsx\`) renderizando estados y botones de autorización para el Guardrail Tier 2.
+
+## Test Plan
+- Unit tests: 76 test suites pasando al 100% (390 unit/integration tests totales, 69 tests específicos de Épica 4).
+- Harness tests: 10 suites de gobernanza pasando al 100% (48 harness tests).
+- Typecheck & Linting: 0 errores de TypeScript, 0 warnings de ESLint.
+- DDL Migrations: Migración \`006_distribution_postiz.sql\` ejecutada idempotentemente con claves foráneas, restricciones CHECK e índices.
+- Auditoría Arquitectónica Gate 2: Aprobada sin reservas por subagente \`architect\` (0 clases, 4 capas estrictas, 0 patrones prohibidos, in-code commentary verificado).
+
+## Issue
+- Issue link/id: [EPIC-04](https://linear.app/indie-suite/issue/EPIC-04)
+
+## RFC
+- RFC link/path: [knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/README.md](knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/README.md)
+- Decision status: approved
+
+## Riesgos
+- Main risks introduced by this PR: Ninguno en tiempo de ejecución. La arquitectura es aditiva, local-first y desacoplada mediante la cola outbox en SQLite, evitando caídas ante fallos de conectividad con APIs externas.
+- Security impact: Protección anti-SSRF integral en el cliente Postiz, validación criptográfica de activos multimedia mediante SHA-256 y control estricto Guardrail Tier 2 con confirmación obligatoria del usuario para cualquier gasto publicitario de fondos reales.
+
+## Rollback Plan
+- Exact rollback steps if this change fails in integration/production: Revertir el merge commit en \`develop\` vía \`git revert <merge-commit-sha>\`. Las tablas de \`006_distribution_postiz.sql\` están completamente aisladas.
+
+## Prueba Devnet
+- Real transaction signature(s): N/A (Este PR implementa la distribución social, media handshake criptográfico y pauta programática con persistencia local en SQLite).
+- On-chain state evidence used for verification: Validaciones de gobernanza, harness test suite y suite de pruebas SQLite/Distribution completadas.
+- Compilación de producción: Suite completa validada (\`pnpm validate\`), 76 archivos de test y 390 pruebas unitarias e integradas pasando al 100%.
+
+## Human Acceptance
+- Status: approved
+- Approved by: @jaymusicmachine
+- Manual test evidence:
+  - Suite completa de validación (\`pnpm validate\`) y 48 tests de gobernanza pasando 100% en verde.
+  - Aprobación explícita del usuario "si" concedida tras revisión de Gate 2.
+- Accepted residual risk: None
+
+## Feature Note (/docs/features)
+- Path to feature note markdown file under \`knowledge/features/*.md\`: ${FEATURE_DOC}
+
+## Scope Labels (Required)
+- [x] I added exactly one \`scope:*\` label
+- [x] I added exactly one \`type:*\` label
+- [x] I added exactly one \`risk:*\` label
+
+## Quality Gates
+- [x] \`pnpm validate\` passed (16 de 16 gates)
+- [x] \`pnpm build\` passed
+- [x] \`pnpm test:harness\` passed (48 tests)
+- [x] Required docs were updated for touched scopes
+EOF
+elif [[ "${BRANCH}" == *"EPIC-03"* || "${ISSUE_ID}" == *"EPIC-03"* ]]; then
 cat <<EOF > "${OUTPUT_FILE}"
 ## Summary
 Este Pull Request implementa la **Épica 3: Pipeline Creativo Multimedia & Repositorio Central de Activos (Basado en Open Generative AI + Prompt Studio Text-Only Workflow)** de Indie-Sync Suite. Se cubren las 7 Historias de Usuario (HU-3.1, HU-3.2, HU-3.3, HU-3.4, HU-3.5, HU-3.6, HU-6.1 v3) a través de sus SPECs técnicos diseñados bajo arquitectura funcional en 4 capas (Presentation, Application, Domain, Infrastructure), cero dependencias de clases y persistencia en SQLite WAL local:

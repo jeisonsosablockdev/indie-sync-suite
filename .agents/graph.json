@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T01:21:52.964Z",
+  "generatedAt": "2026-10-24T04:05:28.663Z",
   "nodes": [
     {
       "id": "AGENTS.md",
@@ -138,6 +138,18 @@
       "type": "feature",
       "label": "feature-jaymusicmachine-EPIC-02-release-planner-engine",
       "path": "knowledge/features/feature-jaymusicmachine-EPIC-02-release-planner-engine.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-03-creative-pipeline-engine-implementation.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-03-creative-pipeline-engine-implementation",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-03-creative-pipeline-engine-implementation.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-03-creative-pipeline-engine.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-03-creative-pipeline-engine",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-03-creative-pipeline-engine.md"
     },
     {
       "id": "knowledge/features/feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1-implementation.md",
@@ -426,6 +438,54 @@
       "type": "governance",
       "label": "STORY-002-08-sidebar-planner-tools",
       "path": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-08-sidebar-planner-tools.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/README.md",
+      "type": "governance",
+      "label": "README",
+      "path": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/README.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-01-brand-anchored-asset-generation.md",
+      "type": "governance",
+      "label": "STORY-003-01-brand-anchored-asset-generation",
+      "path": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-01-brand-anchored-asset-generation.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-02-batching-and-curation-grid.md",
+      "type": "governance",
+      "label": "STORY-003-02-batching-and-curation-grid",
+      "path": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-02-batching-and-curation-grid.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-03-social-copy-and-scripts.md",
+      "type": "governance",
+      "label": "STORY-003-03-social-copy-and-scripts",
+      "path": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-03-social-copy-and-scripts.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-04-typography-cover-stamping.md",
+      "type": "governance",
+      "label": "STORY-003-04-typography-cover-stamping",
+      "path": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-04-typography-cover-stamping.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-05-release-asset-vault.md",
+      "type": "governance",
+      "label": "STORY-003-05-release-asset-vault",
+      "path": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-05-release-asset-vault.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-06-prompt-studio-text-only.md",
+      "type": "governance",
+      "label": "STORY-003-06-prompt-studio-text-only",
+      "path": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-06-prompt-studio-text-only.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-07-sidebar-creative-tools.md",
+      "type": "governance",
+      "label": "STORY-003-07-sidebar-creative-tools",
+      "path": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-07-sidebar-creative-tools.md"
     },
     {
       "id": "knowledge/security/index.md",
