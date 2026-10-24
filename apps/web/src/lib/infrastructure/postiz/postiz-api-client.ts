@@ -53,7 +53,7 @@ export function assertSafePublicUrl(urlString: string): boolean {
       return false;
     }
 
-    const host = parsed.hostname.toLowerCase();
+    const host = parsed.hostname.toLowerCase().replace(/[\[\]]/g, '');
 
     // Disallow loopback, private IP ranges, link-local, and cloud metadata
     if (
