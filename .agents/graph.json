@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T04:05:28.663Z",
+  "generatedAt": "2026-10-24T05:55:31.193Z",
   "nodes": [
     {
       "id": "AGENTS.md",
@@ -150,6 +150,18 @@
       "type": "feature",
       "label": "feature-jaymusicmachine-EPIC-03-creative-pipeline-engine",
       "path": "knowledge/features/feature-jaymusicmachine-EPIC-03-creative-pipeline-engine.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz-implementation.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz-implementation",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz-implementation.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz.md"
     },
     {
       "id": "knowledge/features/feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1-implementation.md",
@@ -486,6 +498,48 @@
       "type": "governance",
       "label": "STORY-003-07-sidebar-creative-tools",
       "path": "knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-07-sidebar-creative-tools.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/README.md",
+      "type": "governance",
+      "label": "README",
+      "path": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/README.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-01-multichannel-scheduling-handshake.md",
+      "type": "governance",
+      "label": "STORY-004-01-multichannel-scheduling-handshake",
+      "path": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-01-multichannel-scheduling-handshake.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-02-micro-campaigns-ads.md",
+      "type": "governance",
+      "label": "STORY-004-02-micro-campaigns-ads",
+      "path": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-02-micro-campaigns-ads.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-03-oauth-hub-connections.md",
+      "type": "governance",
+      "label": "STORY-004-03-oauth-hub-connections",
+      "path": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-03-oauth-hub-connections.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-04-visual-content-calendar.md",
+      "type": "governance",
+      "label": "STORY-004-04-visual-content-calendar",
+      "path": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-04-visual-content-calendar.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-05-retry-queue-error-alerts.md",
+      "type": "governance",
+      "label": "STORY-004-05-retry-queue-error-alerts",
+      "path": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-05-retry-queue-error-alerts.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-06-sidebar-distribution-tools.md",
+      "type": "governance",
+      "label": "STORY-004-06-sidebar-distribution-tools",
+      "path": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-06-sidebar-distribution-tools.md"
     },
     {
       "id": "knowledge/security/index.md",
