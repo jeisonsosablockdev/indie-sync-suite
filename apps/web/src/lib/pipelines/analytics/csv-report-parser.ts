@@ -55,7 +55,11 @@ export function detectSourcePlatform(headers: string[]): StreamingSource {
   const normalized = headers.map((h) => h.toLowerCase().trim().replace(/['"]/g, ''));
 
   // Step 2: Check for Spotify specific headers
-  if (normalized.some((h) => h.includes('spotify') || (h.includes('streams') && h.includes('listeners')))) {
+  const hasSpotify = normalized.some((h) => h.includes('spotify'));
+  const hasStreams = normalized.some((h) => h.includes('streams') || h.includes('reproducciones'));
+  const hasListeners = normalized.some((h) => h.includes('listeners') || h.includes('oyentes'));
+
+  if (hasSpotify || (hasStreams && hasListeners)) {
     return 'SPOTIFY';
   }
 
