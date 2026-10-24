@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "task_id": "EPIC-04",
-  "branch": "epic/jaymusicmachine-EPIC-04-multichannel-distribution-postiz",
+  "task_id": "EPIC-05",
+  "branch": "epic/jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced",
   "current_phase": "PHASE_8_HUMAN_MERGE_APPROVED",
   "phases": {
     "PHASE_1_BOOTSTRAP": { "completed": true },

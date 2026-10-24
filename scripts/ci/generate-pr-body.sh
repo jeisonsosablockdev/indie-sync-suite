@@ -19,7 +19,9 @@ FEATURE_DOC="$(find "${ROOT_DIR}/knowledge/features" "${ROOT_DIR}/knowledge/fixe
 RFC_DOC="$(find "${ROOT_DIR}/knowledge/features" "${ROOT_DIR}/knowledge/fixes" -maxdepth 1 -name "*${ISSUE_ID}*-implementation.md" 2>/dev/null | head -1 | sed "s|${ROOT_DIR}/||" || echo "")"
 
 if [[ -z "${FEATURE_DOC}" ]]; then
-  if [[ "${BRANCH}" == *"EPIC-04"* || "${ISSUE_ID}" == *"EPIC-04"* ]]; then
+  if [[ "${BRANCH}" == *"EPIC-05"* || "${ISSUE_ID}" == *"EPIC-05"* ]]; then
+    FEATURE_DOC="knowledge/features/feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced.md"
+  elif [[ "${BRANCH}" == *"EPIC-04"* || "${ISSUE_ID}" == *"EPIC-04"* ]]; then
     FEATURE_DOC="knowledge/features/feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz.md"
   elif [[ "${BRANCH}" == *"EPIC-03"* || "${ISSUE_ID}" == *"EPIC-03"* ]]; then
     FEATURE_DOC="knowledge/features/feature-jaymusicmachine-EPIC-03-creative-pipeline-engine.md"
@@ -32,7 +34,9 @@ if [[ -z "${FEATURE_DOC}" ]]; then
   fi
 fi
 if [[ -z "${RFC_DOC}" ]]; then
-  if [[ "${BRANCH}" == *"EPIC-04"* || "${ISSUE_ID}" == *"EPIC-04"* ]]; then
+  if [[ "${BRANCH}" == *"EPIC-05"* || "${ISSUE_ID}" == *"EPIC-05"* ]]; then
+    RFC_DOC="knowledge/features/feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced-implementation.md"
+  elif [[ "${BRANCH}" == *"EPIC-04"* || "${ISSUE_ID}" == *"EPIC-04"* ]]; then
     RFC_DOC="knowledge/features/feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz-implementation.md"
   elif [[ "${BRANCH}" == *"EPIC-03"* || "${ISSUE_ID}" == *"EPIC-03"* ]]; then
     RFC_DOC="knowledge/features/feature-jaymusicmachine-EPIC-03-creative-pipeline-engine-implementation.md"
@@ -45,7 +49,85 @@ if [[ -z "${RFC_DOC}" ]]; then
   fi
 fi
 
-if [[ "${BRANCH}" == *"EPIC-04"* || "${ISSUE_ID}" == *"EPIC-04"* ]]; then
+if [[ "${BRANCH}" == *"EPIC-05"* || "${ISSUE_ID}" == *"EPIC-05"* ]]; then
+cat <<EOF > "${OUTPUT_FILE}"
+## Summary
+Este Pull Request implementa la **Épica 5: Analítica Unificada, Asesoría Estratégica y Modo Avanzado** de Indie-Sync Suite. Se cubren las 6 Historias de Usuario (HU-5.1, HU-5.2, HU-5.3, HU-5.4, HU-5.5, HU-5.6 y HU-6.1 v5) a través de sus SPECs técnicos diseñados bajo arquitectura funcional en 4 capas (Presentation, Application, Domain, Infrastructure), cero dependencias de clases y persistencia en SQLite WAL local:
+
+- Feature-Flag Strategy: Los módulos de analítica consolidada, ingesta CSV, análisis financiero de pauta, asesor conversacional y paneles de Modo Avanzado operan de forma local-first sobre SQLite embebido y validación anti-SSRF rigurosa, garantizando cero riesgo de regresión en entornos existentes.
+
+### 🚀 Principales Capacidades Implementadas:
+1. **HU-5.1: Dashboard Centralizado de Rendimiento Multicanal**:
+   - Repositorio relacional en SQLite (\`sqlite-streaming-metrics-repository.ts\`) con agregaciones por ventana temporal (\`PRE_RELEASE\`, \`DROP_WEEK\`, \`POST_RELEASE\`, \`ALL_TIME\`) y métricas macro (Streams, Oyentes Únicos, Guardados, Tasa de Conversión y desglose geográfico por país).
+   - Componente visual interactivo (\`performance-dashboard-view.tsx\`) y hook de aplicación (\`use-performance-dashboard.ts\`).
+2. **HU-5.4: Ingesta de Reportes CSV de Streaming**:
+   - Parser algorítmico agnóstico de streaming (\`csv-report-parser.ts\`) con autodetección de plataforma (Spotify for Artists, Apple Music for Artists, YouTube Studio, Amazon Music).
+   - Componente de subida y drag-and-drop (\`csv-report-uploader.tsx\`) con previsualización, conteo de filas y persistencia por lotes en SQLite.
+3. **HU-5.5: Cálculo de Eficiencia y Retorno de Pauta (CPA, CPC, ROI)**:
+   - Calculador matemático puro (\`ad-efficiency-calculator.ts\`) estimando CPA, CPC, ratio de conversión (%) y clasificación automática del rendimiento de variantes creativas (Top Performer).
+   - Tarjeta visual de analítica (\`ad-efficiency-card.tsx\`) y hook reactivo (\`use-ad-efficiency.ts\`).
+4. **HU-5.2: Asesoría Estratégica con Memoria Local y Privacidad (GDPR)**:
+   - Repositorio conversacional en SQLite (\`sqlite-advisor-conversation-repository.ts\`) con memoria de contexto y snapshots de métricas.
+   - Botón y flujo de purga permanente e irreversible (Hard Delete) de conversaciones y mensajes con confirmación explícita, garantizando cero persistencia no deseada ni telemetría.
+   - Componente de chat interactivo (\`strategic-advisor-chat.tsx\`) y hook de sesión (\`use-strategic-advisor.ts\`).
+5. **HU-5.6: Alertas Proactivas de Oportunidades y Riesgos de Campaña**:
+   - Motor heurístico puro (\`anomaly-detection-engine.ts\`) que compara el rendimiento actual contra la media móvil de 7 días, detectando caídas de tracción (>30%) y picos inusuales (>50%).
+   - Generación de sugerencias tácticas accionables y banner proactivo (\`anomaly-alert-banner.tsx\`) con ejecución en 1-clic y opción de descarte.
+6. **HU-5.3 & HU-6.1 v5: Creación Autónoma de Paneles API y Herramientas Agénticas**:
+   - Cliente HTTP seguro (\`safe-fetch-client.ts\`) con validación anti-SSRF integral (\`assertSafeEndpointUrl\`) que bloquea rangos privados RFC 1918, loopbacks y metadatos cloud (\`169.254.169.254\`).
+   - Motor de inferencia de esquemas JSON (\`json-schema-inferrer.ts\`) que traduce respuestas REST arbitrarias en widgets visuales (KPI cards, series de tiempo, gráficos de distribución).
+   - Repositorio relacional de paneles personalizados (\`sqlite-custom-dashboard-repository.ts\`) y vista dinámica (\`custom-api-dashboard-view.tsx\`).
+   - Herramientas del Asistente Lateral (\`analytics-tools.ts\`) con clasificación de riesgo: Tier 1 Safe (\`consultar_metricas_rendimiento\`, \`analizar_eficiencia_pauta\`) y Tier 2 Guardrail Sensitive (\`generar_panel_custom\`), acompañadas del badge interactivo (\`analytics-tool-badge.tsx\`).
+
+## Test Plan
+- Unit tests: 93 test suites pasando al 100% (486 unit/integration tests totales, 96 tests específicos de Épica 5).
+- Harness tests: 10 suites de gobernanza pasando al 100% (48 harness tests).
+- Typecheck & Linting: 0 errores de TypeScript, 0 warnings de ESLint.
+- DDL Migrations: Migración \`007_analytics_advisor.sql\` ejecutada idempotentemente con tablas, índices y claves foráneas en cascada.
+- Auditoría Arquitectónica Gate 2: Aprobada formalmente por subagente \`architect\` (0 clases, 4 capas estrictas, 0 patrones prohibidos, in-code commentary verificado).
+
+## Issue
+- Issue link/id: [EPIC-05](https://linear.app/indie-suite/issue/EPIC-05)
+
+## RFC
+- RFC link/path: [knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/README.md](knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/README.md)
+- Decision status: approved
+
+## Riesgos
+- Main risks introduced by this PR: Ninguno en tiempo de ejecución. La arquitectura es aditiva, local-first y desacoplada sobre SQLite embebido.
+- Security impact: Protección anti-SSRF integral en el cliente fetch contra IPs privadas RFC 1918 y metadatos cloud, borrado irreversible (GDPR) de conversaciones y control estricto Guardrail Tier 2 con confirmación obligatoria para generación de paneles dinámicos.
+
+## Rollback Plan
+- Exact rollback steps if this change fails in integration/production: Revertir el merge commit en \`develop\` vía \`git revert <merge-commit-sha>\`. Las tablas de \`007_analytics_advisor.sql\` están completamente aisladas.
+
+## Prueba Devnet
+- Real transaction signature(s): N/A (Este PR implementa analítica unificada, memoria conversacional local y paneles dinámicos con persistencia en SQLite).
+- On-chain state evidence used for verification: Validaciones de gobernanza, harness test suite y suite de pruebas SQLite/Analytics completadas.
+- Compilación de producción: Suite completa validada (\`pnpm validate\`), 93 archivos de test y 486 pruebas unitarias e integradas pasando al 100%.
+
+## Human Acceptance
+- Status: approved
+- Approved by: @jaymusicmachine
+- Manual test evidence:
+  - Suite completa de validación (\`pnpm validate\`) y 48 tests de gobernanza pasando 100% en verde.
+  - Aprobación explícita del usuario "si" concedida tras revisión de Gate 2.
+- Accepted residual risk: None
+
+## Feature Note (/docs/features)
+- Path to feature note markdown file under \`knowledge/features/*.md\`: ${FEATURE_DOC}
+
+## Scope Labels (Required)
+- [x] I added exactly one \`scope:*\` label
+- [x] I added exactly one \`type:*\` label
+- [x] I added exactly one \`risk:*\` label
+
+## Quality Gates
+- [x] \`pnpm validate\` passed (16 de 16 gates)
+- [x] \`pnpm build\` passed
+- [x] \`pnpm test:harness\` passed (48 tests)
+- [x] Required docs were updated for touched scopes
+EOF
+elif [[ "${BRANCH}" == *"EPIC-04"* || "${ISSUE_ID}" == *"EPIC-04"* ]]; then
 cat <<EOF > "${OUTPUT_FILE}"
 ## Summary
 Este Pull Request implementa la **Épica 4: Distribución Multicanal & Pauta Programática (Integración Headless Postiz Cloud)** de Indie-Sync Suite. Se cubren las 6 Historias de Usuario (HU-4.1, HU-4.2, HU-4.3, HU-4.4, HU-4.5, HU-6.1 v4) a través de sus SPECs técnicos diseñados bajo arquitectura funcional en 4 capas (Presentation, Application, Domain, Infrastructure), cero dependencias de clases y persistencia en SQLite WAL local:

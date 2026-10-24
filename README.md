@@ -5,7 +5,7 @@ High-performance Next.js 16 and Solana monorepo for Indie Suite (ISS) with 4-Lay
 <!-- DOCS-AUTO:START -->
 ## Documentation Snapshot (Auto-generated)
 
-Updated: 2026-10-24 03:23:13 UTC
+Updated: 2026-10-24 06:31:52 UTC
 
 | Document | Scope | Last Updated | Last Commit |
 | --- | --- | --- | --- |
@@ -14,7 +14,7 @@ Updated: 2026-10-24 03:23:13 UTC
 | [`authority-model.md`](./knowledge/architecture/authority-model.md) | blockchain | not set | 2026-08-23 a69db56b |
 | [`devnet-proof.md`](./knowledge/architecture/devnet-proof.md) | blockchain | not set | 2026-08-23 a69db56b |
 | [`index.md`](./knowledge/architecture/index.md) | general | not set | 2026-08-23 a69db56b |
-| [`nft-spec.md`](./knowledge/architecture/nft-spec.md) | nft | not set | 2026-08-23 a69db56b |
+| [`nft-spec.md`](./knowledge/architecture/nft-spec.md) | nft | not set | 2026-10-23 9c47db64 |
 | [`session-model.md`](./knowledge/architecture/session-model.md) | frontend/auth | not set | 2026-08-23 a69db56b |
 | [`solana-stack.md`](./knowledge/architecture/solana-stack.md) | general | not set | 2026-08-23 a69db56b |
 | [`state-machine.md`](./knowledge/architecture/state-machine.md) | blockchain | not set | 2026-08-23 a69db56b |
