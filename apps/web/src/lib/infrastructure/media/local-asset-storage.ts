@@ -35,8 +35,10 @@ export interface LocalAssetStorage {
  * @returns Safe filename component
  */
 export function sanitizeFilename(filename: string): string {
-  // Step 1: Strip null bytes, slashes, backslashes, and directory traversal sequences
-  return path.basename(filename).replace(/[^a-zA-Z0-9._-]/g, '_');
+  // Step 1: Normalize backslashes to forward slashes for cross-platform basename resolution
+  const normalized = filename.replace(/\\/g, '/');
+  // Step 2: Extract basename and strip non-whitelisted characters
+  return path.basename(normalized).replace(/[^a-zA-Z0-9._-]/g, '_');
 }
 
 /**

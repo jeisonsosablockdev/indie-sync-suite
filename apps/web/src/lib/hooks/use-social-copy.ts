@@ -63,8 +63,8 @@ export function useSocialCopy({
   initialPlatform = 'INSTAGRAM',
 }: UseSocialCopyOptions): UseSocialCopyReturn {
   // Step 1: Initialize phase and platform state
-  const [phase, setPhase] = useState<CampaignPhase>(initialPhase);
-  const [platform, setPlatform] = useState<SocialPlatform>(initialPlatform);
+  const [phase, setPhaseState] = useState<CampaignPhase>(initialPhase);
+  const [platform, setPlatformState] = useState<SocialPlatform>(initialPlatform);
   const [isCopied, setIsCopied] = useState<boolean>(false);
 
   // Step 2: Compute template copy based on parameters
@@ -83,7 +83,43 @@ export function useSocialCopy({
   // Step 3: Allow user manual overrides
   const [customText, setCustomText] = useState<string>(templateResult.fullFormattedText);
 
-  // Re-sync when template changes unless manually edited
+  // Switching phase regenerates template text
+  const setPhase = useCallback(
+    (newPhase: CampaignPhase) => {
+      setPhaseState(newPhase);
+      const updated = generateCampaignCopy({
+        releaseTitle,
+        artistName,
+        genre,
+        narrative,
+        phase: newPhase,
+        platform,
+        streamingLink,
+      });
+      setCustomText(updated.fullFormattedText);
+    },
+    [releaseTitle, artistName, genre, narrative, platform, streamingLink]
+  );
+
+  // Switching platform regenerates formatted text
+  const setPlatform = useCallback(
+    (newPlatform: SocialPlatform) => {
+      setPlatformState(newPlatform);
+      const updated = generateCampaignCopy({
+        releaseTitle,
+        artistName,
+        genre,
+        narrative,
+        phase,
+        platform: newPlatform,
+        streamingLink,
+      });
+      setCustomText(updated.fullFormattedText);
+    },
+    [releaseTitle, artistName, genre, narrative, phase, streamingLink]
+  );
+
+  // Re-sync copy result with current edited text
   const copyResult = useMemo(
     () => ({
       ...templateResult,
