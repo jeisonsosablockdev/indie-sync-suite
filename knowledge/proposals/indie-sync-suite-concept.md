@@ -327,12 +327,23 @@ La creación del `BrandContextDocument` se realiza mediante un proceso interacti
   2. Permite previsualizar, descargar en alta resolución o enviar directamente al módulo de distribución.
   3. Asigna identificadores inmutables basados en contenido (*content-hashing* sha256) para evitar desincronizaciones en re-renderizados.
 
+#### HU-3.6: Estudio y Gestión de Prompts Editables (Prompt Studio & Text-Only Workflow)
+- **Como** Creador, Director Creativo o Artista que trabaja con herramientas externas (Midjourney, Runway, Kling, Sora, Flux local) o que no dispone de cuotas de API de imagen,
+- **Quiero** generar, inspeccionar, editar, versionar, actualizar y copiar prompts en texto plano enriquecidos con la identidad de marca (Nivel 1, 2 y 3) al portapapeles con selectores de formato de plataforma,
+- **Para que** pueda utilizar cualquier motor generativo externo sin depender de llamadas directas a APIs de renderizado y mantener un repositorio persistente y editable de los prompts maestros aprobados para el lanzamiento.
+- **Criterios de Aceptación:**
+  1. Compilador y editor visual de prompts en bloques (Sujeto, Atmósfera/Color, Estilo/Luz, Cámara, Prompt Negativo) con edición libre por el usuario.
+  2. Persistencia relacional en SQLite con historial de versiones y actualización (`UPDATE`) en la tabla `creative_prompts`.
+  3. Selector de presets con copiado 1-clic: Midjourney v6 (`--ar 1:1 --v 6.1 --style raw` / `--ar 9:16`), Flux/SD (positivo y negativo independientes), Video (Runway/Kling) y Texto Plano.
+  4. Modo 100% autónomo sin requerir claves de API de imagen en el OS Keychain.
+  5. Cierre de ciclo con importación de archivo resultante arrastrado a la aplicación.
+
 #### HU-6.1 (v3): Tools Creativas para el Asistente Lateral
 - **Como** Usuario,
-- **Quiero** solicitar la creación de piezas visuales y textos promocionales directamente desde el chat lateral,
+- **Quiero** solicitar la creación de piezas visuales, textos promocionales y copiado de prompts directamente desde el chat lateral,
 - **Para que** el asistente coordine la generación de contenidos en un solo paso conversacional.
 - **Criterios de Aceptación:**
-  1. Incorpora al catálogo de tools: `generar_portada`, `generar_copy` y `listar_activos_aprobados`.
+  1. Incorpora al catálogo de tools: `generar_portada`, `generar_copy`, `copiar_prompt`, `actualizar_prompt` y `listar_activos_aprobados`.
   2. Muestra los previews generados directamente en la conversación con botones de aprobación inmediata.
 
 ---

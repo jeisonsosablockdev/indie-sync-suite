@@ -37,6 +37,8 @@ target
 .npm-cache
 .cache-synpress
 .pnpm-store
+.data
+.local-vault
 "
 
 echo "== Monorepo Structure Check =="
