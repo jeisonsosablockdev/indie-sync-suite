@@ -19,21 +19,89 @@ FEATURE_DOC="$(find "${ROOT_DIR}/knowledge/features" "${ROOT_DIR}/knowledge/fixe
 RFC_DOC="$(find "${ROOT_DIR}/knowledge/features" "${ROOT_DIR}/knowledge/fixes" -maxdepth 1 -name "*${ISSUE_ID}*-implementation.md" 2>/dev/null | head -1 | sed "s|${ROOT_DIR}/||" || echo "")"
 
 if [[ -z "${FEATURE_DOC}" ]]; then
-  if [[ "${BRANCH}" == *"EPIC-01"* || "${ISSUE_ID}" == *"EPIC-01"* ]]; then
+  if [[ "${BRANCH}" == *"EPIC-02"* || "${ISSUE_ID}" == *"EPIC-02"* ]]; then
+    FEATURE_DOC="knowledge/features/feature-jaymusicmachine-EPIC-02-release-planner-engine.md"
+  elif [[ "${BRANCH}" == *"EPIC-01"* || "${ISSUE_ID}" == *"EPIC-01"* ]]; then
     FEATURE_DOC="knowledge/features/feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator.md"
   else
     FEATURE_DOC="knowledge/features/feature-jeisonsosa-ISS-186-monorepo-fdd-architecture.md"
   fi
 fi
 if [[ -z "${RFC_DOC}" ]]; then
-  if [[ "${BRANCH}" == *"EPIC-01"* || "${ISSUE_ID}" == *"EPIC-01"* ]]; then
+  if [[ "${BRANCH}" == *"EPIC-02"* || "${ISSUE_ID}" == *"EPIC-02"* ]]; then
+    RFC_DOC="knowledge/features/feature-jaymusicmachine-EPIC-02-release-planner-engine-implementation.md"
+  elif [[ "${BRANCH}" == *"EPIC-01"* || "${ISSUE_ID}" == *"EPIC-01"* ]]; then
     RFC_DOC="knowledge/features/feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator-implementation.md"
   else
     RFC_DOC="knowledge/features/feature-jeisonsosa-ISS-186-monorepo-fdd-architecture-implementation.md"
   fi
 fi
 
-if [[ "${BRANCH}" == *"EPIC-01"* || "${ISSUE_ID}" == *"EPIC-01"* ]]; then
+if [[ "${BRANCH}" == *"EPIC-02"* || "${ISSUE_ID}" == *"EPIC-02"* ]]; then
+cat <<EOF > "${OUTPUT_FILE}"
+## Summary
+Este Pull Request implementa la **Épica 2: Motor Visual de Planificación y Gestión Estratégica de Lanzamientos (Sustituto Nativo de Plane)** de Indie-Sync Suite. Se cubren las 8 Historias de Usuario (HU-1.4, HU-2.1, HU-2.4, HU-2.2, HU-2.6, HU-2.5, HU-2.3, HU-6.1 v2) a través de sus 32 SPECs técnicos diseñados bajo arquitectura funcional en 4 capas (Presentation, Application, Domain, Infrastructure), cero dependencias de clases y persistencia en SQLite WAL local:
+
+- Feature-Flag Strategy: Los componentes visuales del planificador y sus endpoints operan de forma local-first sobre SQLite embebido sin impacto en los flujos previos del Brand Vault.
+
+### 🚀 Principales Capacidades Implementadas:
+1. **HU-1.4: Ficha Conceptual del Lanzamiento (Contexto Nivel 3)**:
+   - Esquemas Zod para ISRC (ISO 3901), UPC (12 dígitos numéricos), narrativa, temática lírica, mood sonoro y presupuesto.
+   - Agregador jerárquico puro \`buildUnifiedBrandContext\` con herencia estética y compilador de prompt para IA.
+   - Repositorio SQLite con congelamiento inmutable (\`snapshot_frozen = 1\`) y tarjeta visual accesible.
+2. **HU-2.1: Arquetipos de Lanzamiento y Proyección Temporal**:
+   - Plantillas inmutables para Single (6w), EP (8w), Álbum (12w) y Remix (4w).
+   - Proyector de fechas absolutas UTC a medianoche a partir de T-0.
+3. **HU-2.4: Gestión de Enlaces a Audio Externo**:
+   - URLs seguras para Master WAV, Instrumental, Stems y Acapella con comprobación HTTP HEAD ligera y protección anti-SSRF exhaustiva.
+4. **HU-2.2: Alertas de Gatekeepers y Margen DSP**:
+   - Detección de tareas bloqueantes vencidas y salvaguarda del margen de 7 días mínimos antes de T-0 para pitching editorial.
+5. **HU-2.6: Recálculo en Cascada de Cronogramas (DAG)**:
+   - Ordenamiento topológico con prevención de ciclos (\`assertNoCycle\`), vista previa interactiva y rollback atómico (\`schedule_undo_snapshots\`).
+6. **HU-2.5: Flujo de Aprobación de Entregables**:
+   - Máquina de estados finita (\`DRAFT\` -> \`IN_REVIEW\` -> \`APPROVED\` | \`REJECTED\`) con motivo de rechazo obligatorio >= 10 caracteres y auditoría.
+7. **HU-2.3: Perspectiva Asimétrica por Rol**:
+   - Matriz de permisos Sello vs Artista con enmascaramiento confidencial de presupuestos para el creador.
+8. **HU-6.1 v2: Herramientas de Planificación para el Asistente**:
+   - 4 tools agénticas (\`consultar_gatekeepers\`, \`crear_tarea\`, \`mover_fecha_lanzamiento\`, \`recalcular_cronograma\`) con autorización humana Tier 2.
+
+## Test Plan
+- Unit tests: 42 test suites pasando al 100% (195 unit/integration tests).
+- Harness tests: 10 suites de gobernanza pasando al 100% (48 harness tests).
+- Typecheck & Linting: 0 errores de TypeScript, 0 warnings de ESLint.
+- DDL Migrations: Migración \`004_release_planner.sql\` ejecutada idempotentemente con claves foráneas e índices.
+- Criterios de Aceptación verificados y auditados bajo protocolo \`tdd-primal\` con calificación de 9.86/10.
+
+## Related Issues
+- Resolves EPIC-02
+
+## RFC Traceability (RFC Docs)
+- Path to RFC markdown file under \`knowledge/rfcs/**/*.md\`: knowledge/rfcs/EPIC-002-release-planner-engine/README.md
+
+## Manual Testing & Acceptance Evidence
+- Manual test results:
+  - Verificación de la suite completa de pruebas unitarias (\`pnpm test\`) y harness (\`pnpm test:harness\`).
+  - Verificación de tipos (\`pnpm typecheck\`) y linting (\`pnpm lint\`).
+  - Validación completa (\`pnpm validate\`).
+- Human Acceptance:
+  - Autorización explícita concedida por el usuario: "apruebo el Epic-2".
+- Accepted residual risk: None
+
+## Feature Note (/docs/features)
+- Path to feature note markdown file under \`knowledge/features/*.md\`: ${FEATURE_DOC}
+
+## Scope Labels (Required)
+- [x] I added exactly one \`scope:*\` label
+- [x] I added exactly one \`type:*\` label
+- [x] I added exactly one \`risk:*\` label
+
+## Quality Gates
+- [x] \`pnpm validate\` passed (16 de 16 gates)
+- [x] \`pnpm build\` passed
+- [x] \`pnpm test:harness\` passed (48 tests)
+- [x] Required docs were updated for touched scopes
+EOF
+elif [[ "${BRANCH}" == *"EPIC-01"* || "${ISSUE_ID}" == *"EPIC-01"* ]]; then
 cat <<EOF > "${OUTPUT_FILE}"
 ## Summary
 Este Pull Request implementa de forma integral la **Épica 1: Shell Base, Bóveda de Identidad (Brand Vault), SQLite Core y Contrato del Orquestador** de Indie-Sync Suite. Se cubren las 6 Historias de Usuario (HU-1.6, HU-1.3, HU-1.5, HU-1.1, HU-6.3, HU-1.2/6.1) a través de sus 24 SPECs ejecutados rigurosamente bajo arquitectura en 4 capas limpias (Presentation, Application, Domain, Infrastructure) y TDD (182 unit/integration tests pasando al 100%):
