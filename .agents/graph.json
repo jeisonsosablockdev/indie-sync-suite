@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T21:39:02.608Z",
+  "generatedAt": "2026-10-24T01:21:52.964Z",
   "nodes": [
     {
       "id": "AGENTS.md",
@@ -126,6 +126,18 @@
       "type": "feature",
       "label": "feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator",
       "path": "knowledge/features/feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-02-release-planner-engine-implementation.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-02-release-planner-engine-implementation",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-02-release-planner-engine-implementation.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-02-release-planner-engine.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-02-release-planner-engine",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-02-release-planner-engine.md"
     },
     {
       "id": "knowledge/features/feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1-implementation.md",
@@ -360,6 +372,60 @@
       "type": "governance",
       "label": "STORY-001-06-socratic-interview-sidebar",
       "path": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-06-socratic-interview-sidebar.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-002-release-planner-engine/README.md",
+      "type": "governance",
+      "label": "README",
+      "path": "knowledge/rfcs/EPIC-002-release-planner-engine/README.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-01-release-context-level3.md",
+      "type": "governance",
+      "label": "STORY-002-01-release-context-level3",
+      "path": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-01-release-context-level3.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-02-archetype-planner-templates.md",
+      "type": "governance",
+      "label": "STORY-002-02-archetype-planner-templates",
+      "path": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-02-archetype-planner-templates.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-03-audio-asset-links.md",
+      "type": "governance",
+      "label": "STORY-002-03-audio-asset-links",
+      "path": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-03-audio-asset-links.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-04-gatekeeper-alerts.md",
+      "type": "governance",
+      "label": "STORY-002-04-gatekeeper-alerts",
+      "path": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-04-gatekeeper-alerts.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-05-cascade-schedule-recalculation.md",
+      "type": "governance",
+      "label": "STORY-002-05-cascade-schedule-recalculation",
+      "path": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-05-cascade-schedule-recalculation.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-06-deliverable-approval-workflow.md",
+      "type": "governance",
+      "label": "STORY-002-06-deliverable-approval-workflow",
+      "path": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-06-deliverable-approval-workflow.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-07-role-preview-toggle.md",
+      "type": "governance",
+      "label": "STORY-002-07-role-preview-toggle",
+      "path": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-07-role-preview-toggle.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-08-sidebar-planner-tools.md",
+      "type": "governance",
+      "label": "STORY-002-08-sidebar-planner-tools",
+      "path": "knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-08-sidebar-planner-tools.md"
     },
     {
       "id": "knowledge/security/index.md",
