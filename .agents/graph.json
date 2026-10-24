@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T07:46:13.866Z",
+  "generatedAt": "2026-10-23T21:39:02.608Z",
   "nodes": [
     {
       "id": "AGENTS.md",
@@ -114,6 +114,30 @@
       "type": "governance",
       "label": "index",
       "path": "knowledge/database/models/index.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator-implementation.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator-implementation",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator-implementation.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1-implementation.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1-implementation",
+      "path": "knowledge/features/feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1-implementation.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1",
+      "path": "knowledge/features/feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1.md"
     },
     {
       "id": "knowledge/governance/clean-code-folder-structure.md",
@@ -294,6 +318,48 @@
       "type": "governance",
       "label": "indie-sync-suite-concept",
       "path": "knowledge/proposals/indie-sync-suite-concept.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/README.md",
+      "type": "governance",
+      "label": "README",
+      "path": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/README.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-01-sqlite-core-outbox.md",
+      "type": "governance",
+      "label": "STORY-001-01-sqlite-core-outbox",
+      "path": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-01-sqlite-core-outbox.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-02-byok-keyring-health.md",
+      "type": "governance",
+      "label": "STORY-001-02-byok-keyring-health",
+      "path": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-02-byok-keyring-health.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-03-brand-vault-crud.md",
+      "type": "governance",
+      "label": "STORY-001-03-brand-vault-crud",
+      "path": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-03-brand-vault-crud.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-04-ai-provider-registry.md",
+      "type": "governance",
+      "label": "STORY-001-04-ai-provider-registry",
+      "path": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-04-ai-provider-registry.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-05-tool-calling-guardrails.md",
+      "type": "governance",
+      "label": "STORY-001-05-tool-calling-guardrails",
+      "path": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-05-tool-calling-guardrails.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-06-socratic-interview-sidebar.md",
+      "type": "governance",
+      "label": "STORY-001-06-socratic-interview-sidebar",
+      "path": "knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-06-socratic-interview-sidebar.md"
     },
     {
       "id": "knowledge/security/index.md",

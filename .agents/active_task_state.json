@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "task_id": "EPIC-01-COMPLETE",
-  "branch": "epic/jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator",
+  "task_id": "EPIC-02",
+  "branch": "epic/jaymusicmachine-EPIC-02-release-planner-engine",
   "current_phase": "PHASE_8_HUMAN_MERGE_APPROVED",
   "phases": {
     "PHASE_1_BOOTSTRAP": { "completed": true },
