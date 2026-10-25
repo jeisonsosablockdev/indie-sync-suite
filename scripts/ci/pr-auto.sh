@@ -14,6 +14,8 @@ fi
 DEFAULT_TITLE="refactor(monorepo): Monorepo Workspaces & 4-Layer Feature-Driven Design (FDD) Architecture (${ISSUE_ID})"
 if [[ "${ISSUE_ID}" == "ISS-001" ]]; then
   DEFAULT_TITLE="docs(spec): initial setup and product specification V3.2 for Indie-Sync Suite (${ISSUE_ID})"
+elif [[ "${BRANCH}" == *"EPIC-06"* || "${ISSUE_ID}" == *"EPIC-06"* ]]; then
+  DEFAULT_TITLE="feat(epic-06): Conectividad Externa, Portal del Artista e Interoperabilidad Agéntica (MCP) & Hardening"
 elif [[ "${BRANCH}" == *"EPIC-05"* || "${ISSUE_ID}" == *"EPIC-05"* ]]; then
   DEFAULT_TITLE="feat(epic-05): Analítica Unificada, Asesoría Estratégica y Modo Avanzado (Paneles API y Tools de Asistente)"
 elif [[ "${BRANCH}" == *"EPIC-04"* || "${ISSUE_ID}" == *"EPIC-04"* ]]; then
