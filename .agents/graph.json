@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T05:55:31.193Z",
+  "generatedAt": "2026-10-25T02:08:01.110Z",
   "nodes": [
     {
       "id": "AGENTS.md",
@@ -162,6 +162,30 @@
       "type": "feature",
       "label": "feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz",
       "path": "knowledge/features/feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced-implementation.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced-implementation",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced-implementation.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening-implementation.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening-implementation",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening-implementation.md"
+    },
+    {
+      "id": "knowledge/features/feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening.md",
+      "type": "feature",
+      "label": "feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening",
+      "path": "knowledge/features/feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening.md"
     },
     {
       "id": "knowledge/features/feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1-implementation.md",
@@ -540,6 +564,78 @@
       "type": "governance",
       "label": "STORY-004-06-sidebar-distribution-tools",
       "path": "knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-06-sidebar-distribution-tools.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/README.md",
+      "type": "governance",
+      "label": "README",
+      "path": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/README.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-01-centralized-performance-dashboard.md",
+      "type": "governance",
+      "label": "STORY-005-01-centralized-performance-dashboard",
+      "path": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-01-centralized-performance-dashboard.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-02-streaming-csv-report-ingestion.md",
+      "type": "governance",
+      "label": "STORY-005-02-streaming-csv-report-ingestion",
+      "path": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-02-streaming-csv-report-ingestion.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-03-ad-spend-efficiency-cpa-cpc.md",
+      "type": "governance",
+      "label": "STORY-005-03-ad-spend-efficiency-cpa-cpc",
+      "path": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-03-ad-spend-efficiency-cpa-cpc.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-04-strategic-advisor-memory-privacy.md",
+      "type": "governance",
+      "label": "STORY-005-04-strategic-advisor-memory-privacy",
+      "path": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-04-strategic-advisor-memory-privacy.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-05-proactive-anomaly-alerts.md",
+      "type": "governance",
+      "label": "STORY-005-05-proactive-anomaly-alerts",
+      "path": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-05-proactive-anomaly-alerts.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-06-autonomous-api-dashboard-builder.md",
+      "type": "governance",
+      "label": "STORY-005-06-autonomous-api-dashboard-builder",
+      "path": "knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-06-autonomous-api-dashboard-builder.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/README.md",
+      "type": "governance",
+      "label": "README",
+      "path": "knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/README.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-01-artist-portal-magic-link.md",
+      "type": "governance",
+      "label": "STORY-006-01-artist-portal-magic-link",
+      "path": "knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-01-artist-portal-magic-link.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-02-open-rest-api-gateway.md",
+      "type": "governance",
+      "label": "STORY-006-02-open-rest-api-gateway",
+      "path": "knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-02-open-rest-api-gateway.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-03-local-mcp-server-protocol.md",
+      "type": "governance",
+      "label": "STORY-006-03-local-mcp-server-protocol",
+      "path": "knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-03-local-mcp-server-protocol.md"
+    },
+    {
+      "id": "knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-04-production-hardening-security.md",
+      "type": "governance",
+      "label": "STORY-006-04-production-hardening-security",
+      "path": "knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-04-production-hardening-security.md"
     },
     {
       "id": "knowledge/security/index.md",
