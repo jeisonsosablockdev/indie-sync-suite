@@ -107,14 +107,17 @@ export function createApplicationPorts(artistRepo: SqliteArtistRepository, label
   };
 }
 
+const SCRIPT_DIR = typeof import.meta !== 'undefined' && import.meta.dirname ? import.meta.dirname : path.resolve(process.cwd(), 'scripts');
+const REPO_ROOT = path.resolve(SCRIPT_DIR, '..');
+
 /**
  * Initializes database client and runs pending migrations idempotently.
  */
 export function initDatabase(dbPath?: string, isMemory = false) {
-  const resolvedPath = dbPath ?? path.resolve(process.cwd(), '.data/indie_suite.db');
+  const resolvedPath = dbPath ?? path.resolve(REPO_ROOT, '.data/indie_suite.db');
   const client = new SqliteClient({ isMemory, databasePath: resolvedPath });
   const db = client.getDatabase();
-  const migrationsDir = path.resolve(process.cwd(), 'apps/web/src/lib/infrastructure/db/migrations');
+  const migrationsDir = path.resolve(REPO_ROOT, 'apps/web/src/lib/infrastructure/db/migrations');
   runMigrations(db, migrationsDir);
 
   const artistRepo = new SqliteArtistRepository(db);
