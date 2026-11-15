@@ -30,4 +30,9 @@ target
 programs/**/target
 .tmp.driveupload
 **/.tmp.driveupload
+.data/
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
 

@@ -30,11 +30,11 @@ Last Generated: 2026-09-06
 | Observations | 0 |
 | Proposals | 1 |
 | Reports | 0 |
-| Archived | 52 |
+| Archived | 100 |
 | Observed status | 1 |
 | Triaged status | 0 |
 | Promoted status | 0 |
-| Archived status | 52 |
+| Archived status | 100 |
 
 ## Inbox
 
@@ -73,8 +73,20 @@ _No items yet._
 | index | archived | none | [Data Models Index](knowledge/database/models/index.md) | n/a |
 | feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator-implementation | archived | none | [feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator-implementation](knowledge/features/feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator-implementation.md) | n/a |
 | feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator | archived | none | [feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator](knowledge/features/feature-jaymusicmachine-EPIC-01-shell-brand-vault-sqlite-orchestrator.md) | n/a |
+| feature-jaymusicmachine-EPIC-02-release-planner-engine-implementation | archived | none | [feature-jaymusicmachine-EPIC-02-release-planner-engine-implementation](knowledge/features/feature-jaymusicmachine-EPIC-02-release-planner-engine-implementation.md) | n/a |
+| feature-jaymusicmachine-EPIC-02-release-planner-engine | archived | none | [feature-jaymusicmachine-EPIC-02-release-planner-engine](knowledge/features/feature-jaymusicmachine-EPIC-02-release-planner-engine.md) | n/a |
+| feature-jaymusicmachine-EPIC-03-creative-pipeline-engine-implementation | archived | none | [feature-jaymusicmachine-EPIC-03-creative-pipeline-engine-implementation](knowledge/features/feature-jaymusicmachine-EPIC-03-creative-pipeline-engine-implementation.md) | n/a |
+| feature-jaymusicmachine-EPIC-03-creative-pipeline-engine | archived | none | [feature-jaymusicmachine-EPIC-03-creative-pipeline-engine](knowledge/features/feature-jaymusicmachine-EPIC-03-creative-pipeline-engine.md) | n/a |
+| feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz-implementation | archived | none | [feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz-implementation](knowledge/features/feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz-implementation.md) | n/a |
+| feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz | archived | none | [feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz](knowledge/features/feature-jaymusicmachine-EPIC-04-multichannel-distribution-postiz.md) | n/a |
+| feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced-implementation | archived | none | [feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced-implementation](knowledge/features/feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced-implementation.md) | n/a |
+| feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced | archived | none | [feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced](knowledge/features/feature-jaymusicmachine-EPIC-05-analytics-strategic-advisor-advanced.md) | n/a |
+| feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening-implementation | archived | none | [feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening-implementation](knowledge/features/feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening-implementation.md) | n/a |
+| feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening | archived | none | [feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening](knowledge/features/feature-jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening.md) | n/a |
 | feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1-implementation | archived | none | [feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1-implementation](knowledge/features/feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1-implementation.md) | n/a |
 | feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1 | archived | none | [feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1](knowledge/features/feature-jaymusicmachine-ISS-001-initial-setup-and-product-spec-v1.md) | n/a |
+| feature-jaymusicmachine-ISS-007-mcp-standalone-server-artist-integration-implementation | archived | none | [feature-jaymusicmachine-ISS-007-mcp-standalone-server-artist-integration-implementation](knowledge/features/feature-jaymusicmachine-ISS-007-mcp-standalone-server-artist-integration-implementation.md) | n/a |
+| feature-jaymusicmachine-ISS-007-mcp-standalone-server-artist-integration | archived | none | [feature-jaymusicmachine-ISS-007-mcp-standalone-server-artist-integration](knowledge/features/feature-jaymusicmachine-ISS-007-mcp-standalone-server-artist-integration.md) | n/a |
 | clean-code-folder-structure | archived | none | [clean-code-folder-structure](knowledge/governance/clean-code-folder-structure.md) | n/a |
 | documentation-policy | archived | none | [Documentation Policy](knowledge/governance/documentation-policy.md) | n/a |
 | frontend-ui-policy | archived | none | [Frontend Ui Policy](knowledge/governance/frontend-ui-policy.md) | n/a |
@@ -104,5 +116,41 @@ _No items yet._
 | solana-kit-migration-recipes | archived | none | [Solana Kit Migration Recipes](knowledge/guides/solana-kit-migration-recipes.md) | n/a |
 | index | archived | none | [Knowledge Catalog](knowledge/index.md) | n/a |
 | log | archived | none | [Log](knowledge/log.md) | n/a |
-| STORY-001-01-kickoff | archived | none | [STORY-001-01 Kickoff y Sustrato Determinista](knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-01-kickoff.md) | n/a |
+| STORY-001-01-sqlite-core-outbox | archived | none | [STORY-001-01 HU-1.6 Persistencia Relacional SQLite Core y Cola Outbox](knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-01-sqlite-core-outbox.md) | n/a |
+| STORY-001-02-byok-keyring-health | archived | none | [STORY-001-02 HU-1.3/1.5 Gestión Segura de Credenciales BYOK y Motor de Diagnóstico de Salud](knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-02-byok-keyring-health.md) | n/a |
+| STORY-001-03-brand-vault-crud | archived | none | [STORY-001-03 HU-1.1 Bóveda de Identidad Visual y Conceptual (Brand Vault CRUD)](knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-03-brand-vault-crud.md) | n/a |
+| STORY-001-04-ai-provider-registry | archived | none | [STORY-001-04 Factoría Desacoplada de Modelos de Lenguaje (AiProviderRegistry)](knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-04-ai-provider-registry.md) | n/a |
+| STORY-001-05-tool-calling-guardrails | archived | none | [STORY-001-05 HU-6.3 Protocolo de Acciones (Tool Calling), Guardrails y Action Log](knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-05-tool-calling-guardrails.md) | n/a |
+| STORY-001-06-socratic-interview-sidebar | archived | none | [STORY-001-06 HU-1.2/6.1 Asistente Lateral Operativo y Entrevista Socrática de Marca](knowledge/rfcs/EPIC-001-shell-brand-vault-sqlite-orchestrator/STORY-001-06-socratic-interview-sidebar.md) | n/a |
+| STORY-002-01-release-context-level3 | archived | none | [STORY-002-01 HU-1.4 Ficha Conceptual del Lanzamiento (Contexto Nivel 3)](knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-01-release-context-level3.md) | n/a |
+| STORY-002-02-archetype-planner-templates | archived | none | [STORY-002-02 HU-2.1 Creación de Lanzamiento por Arquetipo (Plantillas Musicales)](knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-02-archetype-planner-templates.md) | n/a |
+| STORY-002-03-audio-asset-links | archived | none | [STORY-002-03 HU-2.4 Registro y Validación de Enlaces a Activos de Audio (Drive / Dropbox / Disco)](knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-03-audio-asset-links.md) | n/a |
+| STORY-002-04-gatekeeper-alerts | archived | none | [STORY-002-04 HU-2.2 Alertas de Hitos Bloqueantes (Gatekeepers) y Camino Crítico](knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-04-gatekeeper-alerts.md) | n/a |
+| STORY-002-05-cascade-schedule-recalculation | archived | none | [STORY-002-05 HU-2.6 Recálculo en Cascada del Cronograma ante Retrasos Críticos](knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-05-cascade-schedule-recalculation.md) | n/a |
+| STORY-002-06-deliverable-approval-workflow | archived | none | [STORY-002-06 HU-2.5 Bucle Formal de Aprobación y Rechazo con Feedback de Colaboradores](knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-06-deliverable-approval-workflow.md) | n/a |
+| STORY-002-07-role-preview-toggle | archived | none | [STORY-002-07 HU-2.3 Vista Diferenciada por Roles (RBAC Local & RolePreviewToggle)](knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-07-role-preview-toggle.md) | n/a |
+| STORY-002-08-sidebar-planner-tools | archived | none | [STORY-002-08 HU-6.1 (v2) Tools de Planificación para el Asistente Lateral Operativo](knowledge/rfcs/EPIC-002-release-planner-engine/STORY-002-08-sidebar-planner-tools.md) | n/a |
+| STORY-003-01-brand-anchored-asset-generation | archived | none | [STORY-003-01-brand-anchored-asset-generation](knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-01-brand-anchored-asset-generation.md) | n/a |
+| STORY-003-02-batching-and-curation-grid | archived | none | [STORY-003-02-batching-and-curation-grid](knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-02-batching-and-curation-grid.md) | n/a |
+| STORY-003-03-social-copy-and-scripts | archived | none | [STORY-003-03-social-copy-and-scripts](knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-03-social-copy-and-scripts.md) | n/a |
+| STORY-003-04-typography-cover-stamping | archived | none | [STORY-003-04-typography-cover-stamping](knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-04-typography-cover-stamping.md) | n/a |
+| STORY-003-05-release-asset-vault | archived | none | [STORY-003-05-release-asset-vault](knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-05-release-asset-vault.md) | n/a |
+| STORY-003-06-prompt-studio-text-only | archived | none | [STORY-003-06-prompt-studio-text-only](knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-06-prompt-studio-text-only.md) | n/a |
+| STORY-003-07-sidebar-creative-tools | archived | none | [STORY-003-07-sidebar-creative-tools](knowledge/rfcs/EPIC-003-creative-pipeline-engine/STORY-003-07-sidebar-creative-tools.md) | n/a |
+| STORY-004-01-multichannel-scheduling-handshake | archived | none | [STORY-004-01-multichannel-scheduling-handshake](knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-01-multichannel-scheduling-handshake.md) | n/a |
+| STORY-004-02-micro-campaigns-ads | archived | none | [STORY-004-02-micro-campaigns-ads](knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-02-micro-campaigns-ads.md) | n/a |
+| STORY-004-03-oauth-hub-connections | archived | none | [STORY-004-03-oauth-hub-connections](knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-03-oauth-hub-connections.md) | n/a |
+| STORY-004-04-visual-content-calendar | archived | none | [STORY-004-04-visual-content-calendar](knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-04-visual-content-calendar.md) | n/a |
+| STORY-004-05-retry-queue-error-alerts | archived | none | [STORY-004-05-retry-queue-error-alerts](knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-05-retry-queue-error-alerts.md) | n/a |
+| STORY-004-06-sidebar-distribution-tools | archived | none | [STORY-004-06-sidebar-distribution-tools](knowledge/rfcs/EPIC-004-multichannel-distribution-postiz/STORY-004-06-sidebar-distribution-tools.md) | n/a |
+| STORY-005-01-centralized-performance-dashboard | archived | none | [STORY-005-01-centralized-performance-dashboard](knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-01-centralized-performance-dashboard.md) | n/a |
+| STORY-005-02-streaming-csv-report-ingestion | archived | none | [STORY-005-02-streaming-csv-report-ingestion](knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-02-streaming-csv-report-ingestion.md) | n/a |
+| STORY-005-03-ad-spend-efficiency-cpa-cpc | archived | none | [STORY-005-03-ad-spend-efficiency-cpa-cpc](knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-03-ad-spend-efficiency-cpa-cpc.md) | n/a |
+| STORY-005-04-strategic-advisor-memory-privacy | archived | none | [STORY-005-04-strategic-advisor-memory-privacy](knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-04-strategic-advisor-memory-privacy.md) | n/a |
+| STORY-005-05-proactive-anomaly-alerts | archived | none | [STORY-005-05-proactive-anomaly-alerts](knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-05-proactive-anomaly-alerts.md) | n/a |
+| STORY-005-06-autonomous-api-dashboard-builder | archived | none | [STORY-005-06-autonomous-api-dashboard-builder](knowledge/rfcs/EPIC-005-analytics-strategic-advisor-advanced/STORY-005-06-autonomous-api-dashboard-builder.md) | n/a |
+| STORY-006-01-artist-portal-magic-link | archived | none | [STORY-006-01-artist-portal-magic-link](knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-01-artist-portal-magic-link.md) | n/a |
+| STORY-006-02-open-rest-api-gateway | archived | none | [STORY-006-02-open-rest-api-gateway](knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-02-open-rest-api-gateway.md) | n/a |
+| STORY-006-03-local-mcp-server-protocol | archived | none | [STORY-006-03-local-mcp-server-protocol](knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-03-local-mcp-server-protocol.md) | n/a |
+| STORY-006-04-production-hardening-security | archived | none | [STORY-006-04-production-hardening-security](knowledge/rfcs/EPIC-006-external-connectivity-artist-portal-mcp-hardening/STORY-006-04-production-hardening-security.md) | n/a |
 | index | archived | none | [Security Quality & Compliance Index](knowledge/security/index.md) | n/a |

@@ -7,6 +7,10 @@
     "linear": {
       "command": "node",
       "args": ["--import", "tsx", "./scripts/linear-mcp-server.ts"]
+    },
+    "indie-sync-suite": {
+      "command": "node",
+      "args": ["--import", "tsx", "./scripts/indie-sync-mcp-server.ts"]
     }
   }
 }

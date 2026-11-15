@@ -2,8 +2,9 @@
  * @file mcp-server-handler.ts
  * @layer Domain
  * @description Pure protocol handler implementing Model Context Protocol (MCP) v1.0 and JSON-RPC 2.0:
- *              dispatches resource reading (`brand://`, `releases://`, `metrics://`) and tools execution
- *              (`mcp_crear_tarea`, `mcp_aprobar_entregable`, `mcp_consultar_metricas`). Zero network I/O, zero classes.
+ *              dispatches initialize, ping, resource reading (`brand://`, `releases://`, `metrics://`)
+ *              and tools execution (`mcp_crear_artista`, `mcp_listar_artistas`, `mcp_crear_tarea`,
+ *              `mcp_aprobar_entregable`, `mcp_consultar_metricas`). Zero network I/O, zero classes.
  */
 
 export interface McpResourceDefinition {
@@ -64,6 +65,33 @@ export const MCP_RESOURCES_CATALOG: McpResourceDefinition[] = [
 
 export const MCP_TOOLS_CATALOG: McpToolDefinition[] = [
   {
+    name: 'mcp_crear_artista',
+    description: 'Registra un nuevo artista musical en la base de datos y asigna su paleta de colores y género.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        name: { type: 'string', description: 'Nombre del artista' },
+        genre: { type: 'string', description: 'Género musical principal' },
+        bio: { type: 'string', description: 'Biografía opcional' },
+        colorPalette: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'Paleta de colores hexadecimales (1 a 6 colores)',
+        },
+        labelId: { type: 'string', description: 'UUID opcional del sello discográfico' },
+      },
+      required: ['name', 'genre'],
+    },
+  },
+  {
+    name: 'mcp_listar_artistas',
+    description: 'Obtiene la lista de todos los artistas registrados en el catálogo.',
+    inputSchema: {
+      type: 'object',
+      properties: {},
+    },
+  },
+  {
     name: 'mcp_crear_tarea',
     description: 'Crea un nuevo entregable o hito operativo en el cronograma del lanzamiento.',
     inputSchema: {
@@ -123,6 +151,33 @@ export function createMcpServerHandler(ports: McpServerPorts): McpServerHandler 
 
       // Step 2: Dispatch protocol methods
       switch (method) {
+        case 'initialize':
+          return {
+            jsonrpc: '2.0',
+            id,
+            result: {
+              protocolVersion: '2024-11-05',
+              capabilities: {
+                tools: {},
+                resources: {},
+              },
+              serverInfo: {
+                name: 'indie-sync-suite',
+                version: '0.2.0',
+              },
+            },
+          };
+
+        case 'notifications/initialized':
+          return { jsonrpc: '2.0', id };
+
+        case 'ping':
+          return {
+            jsonrpc: '2.0',
+            id,
+            result: {},
+          };
+
         case 'resources/list':
           return {
             jsonrpc: '2.0',
@@ -163,7 +218,26 @@ export function createMcpServerHandler(ports: McpServerPorts): McpServerHandler 
               error: { code: -32602, message: 'Parámetro name obligatorio para tools/call' },
             };
           }
-          const output = await ports.callTool(params.name, params.arguments || {});
+
+          const args = params.arguments || {};
+
+          // Step 3: Validate tool-specific parameters
+          if (params.name === 'mcp_crear_artista') {
+            const name = typeof args.name === 'string' ? args.name.trim() : '';
+            const genre = typeof args.genre === 'string' ? args.genre.trim() : '';
+            if (!name || !genre) {
+              return {
+                jsonrpc: '2.0',
+                id,
+                error: {
+                  code: -32602,
+                  message: 'Parámetros obligatorios faltantes o inválidos para mcp_crear_artista: name y genre requeridos',
+                },
+              };
+            }
+          }
+
+          const output = await ports.callTool(params.name, args);
           return {
             jsonrpc: '2.0',
             id,

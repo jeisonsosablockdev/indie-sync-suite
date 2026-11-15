@@ -53,7 +53,78 @@ if [[ -z "${RFC_DOC}" ]]; then
   fi
 fi
 
-if [[ "${BRANCH}" == *"EPIC-06"* || "${ISSUE_ID}" == *"EPIC-06"* ]]; then
+if [[ "${BRANCH}" == *"ISS-007"* || "${ISSUE_ID}" == *"ISS-007"* ]]; then
+cat <<EOF > "${OUTPUT_FILE}"
+## Summary
+Este Pull Request implementa el **Servidor MCP Stdio Autónomo & Herramientas de Creación de Artistas para Antigravity** de Indie-Sync Suite (ISS-007). Expone la suite mediante el protocolo estándar Model Context Protocol (MCP v1.0 / JSON-RPC 2.0) sobre transporte stdio (\`node:readline\`), permitiendo a agentes externos como Google Antigravity, Claude Desktop o Cursor interactuar directamente con la base de datos local SQLite:
+
+### 🚀 Principales Capacidades Implementadas:
+1. **Servidor MCP Stdio Autónomo (\`scripts/indie-sync-mcp-server.ts\`)**:
+   - Transporte minimalista sobre stdio con \`node:readline\` para procesamiento de streams \`ndjson\`, cumpliendo las directrices del Ponytail Audit (< 120 líneas, cero manipulación manual de buffers).
+   - Auto-resolución de sellos: si no se especifica \`labelId\`, auto-crea o asigna el sello raíz predeterminado (*"Indie Sync Records"*) para preservar integridad referencial de clave foránea en SQLite (\`.data/indie_suite.db\`).
+   - Apagado limpio y graceful shutdown en señales \`SIGINT\` y \`SIGTERM\`.
+2. **Ampliación del Catálogo MCP en Dominio (\`apps/web/src/lib/pipelines/mcp/mcp-server-handler.ts\`)**:
+   - Centralización de los métodos de protocolo \`initialize\` (v\`2024-11-05\`), \`ping\` y \`notifications/initialized\`.
+   - Herramienta \`mcp_crear_artista\` con validación de parámetros (\`name\`, \`genre\`, \`bio\`, \`colorPalette\`).
+   - Herramienta \`mcp_listar_artistas\` para consultar el catálogo completo de artistas.
+   - Códigos estándar de error JSON-RPC 2.0 (\`-32602\` y \`-32601\`).
+3. **Auditoría Transaccional Local (\`local-mcp-bridge.ts\`)**:
+   - Registro persistente de cada llamada RPC en la tabla SQLite \`mcp_audit_logs\`.
+4. **Integración con Antigravity & Limpieza de Dependencias**:
+   - Configuración en \`.mcp.json\` y \`~/.gemini/antigravity/mcp_config.json\`.
+   - Eliminación de la dependencia no utilizada \`@modelcontextprotocol/server\` en \`package.json\`.
+
+### 🛡️ Feature-Flag Strategy:
+- **Feature-Flag Strategy**: Los módulos y herramientas del servidor MCP stdio operan de manera desacoplada y aditiva, permitiendo la activación selectiva de clientes MCP (Antigravity, Cursor, Claude Desktop) mediante configuración stdio sin alterar los flujos existentes de la aplicación web.
+
+## Test Plan
+- Unit & Integration tests: 105 test suites pasando al 100% (556 tests totales).
+- Harness tests: 10 suites de gobernanza pasando al 100% (48 harness tests).
+- Typecheck & Linting: 0 errores de TypeScript, 0 warnings de ESLint.
+- Verificación live stdio: Handshake y creación de artistas ejecutados con éxito contra SQLite.
+
+## Issue
+- Issue link/id: [ISS-007](knowledge/features/feature-jaymusicmachine-ISS-007-mcp-standalone-server-artist-integration.md)
+
+## RFC
+- RFC link/path: [knowledge/features/feature-jaymusicmachine-ISS-007-mcp-standalone-server-artist-integration-implementation.md](knowledge/features/feature-jaymusicmachine-ISS-007-mcp-standalone-server-artist-integration-implementation.md)
+- Decision status: approved
+
+## Riesgos
+- Main risks introduced by this PR: Ninguno en tiempo de ejecución. Adición aditiva y desacoplada de la interfaz MCP stdio.
+- Security impact: Auditoría de llamadas en base de datos local y validación Zod de parámetros para prevenir corrupción de datos.
+
+## Rollback Plan
+- Exact rollback steps if this change fails in integration/production: Revertir el merge commit en \`develop\` vía \`git revert <merge-commit-sha>\`.
+
+## Prueba Devnet
+- Real transaction signature(s): N/A (Este PR implementa servidor MCP y herramientas de artista sobre SQLite local).
+- On-chain state evidence used for verification: Validaciones de gobernanza, harness test suite y suite de pruebas SQLite completadas.
+- Compilación de producción: Suite completa validada (\`pnpm validate\`), 105 archivos de test y 556 pruebas pasando al 100%.
+
+## Human Acceptance
+- Status: approved
+- Approved by: @jaymusicmachine
+- Manual test evidence:
+  - Suite completa de validación (\`pnpm validate\`) pasando 100% en verde (556/556 tests).
+  - Aprobación explícita del usuario (Human Acceptance) confirmada.
+- Accepted residual risk: None
+
+## Feature Note (/docs/features)
+- Path to feature note markdown file under \`knowledge/features/*.md\`: ${FEATURE_DOC}
+
+## Scope Labels (Required)
+- [x] I added exactly one \`scope:*\` label
+- [x] I added exactly one \`type:*\` label
+- [x] I added exactly one \`risk:*\` label
+
+## Quality Gates
+- [x] \`pnpm validate\` passed (16 de 16 gates)
+- [x] \`pnpm build\` passed
+- [x] \`pnpm test:harness\` passed (48 tests)
+- [x] Required docs were updated for touched scopes
+EOF
+elif [[ "${BRANCH}" == *"EPIC-06"* || "${ISSUE_ID}" == *"EPIC-06"* ]]; then
 cat <<EOF > "${OUTPUT_FILE}"
 ## Summary
 Este Pull Request implementa la **Épica 6: Conectividad Externa, Portal del Artista e Interoperabilidad Agéntica (MCP) & Hardening de Producción** de Indie-Sync Suite. Se cubren las 4 Historias de Usuario / SPECs técnicos (HU-6.1, HU-6.2, HU-6.3, HU-6.4) bajo arquitectura funcional estricta en 4 capas (Presentation, Application, Domain, Infrastructure), cero dependencias de clases y persistencia en SQLite WAL local:

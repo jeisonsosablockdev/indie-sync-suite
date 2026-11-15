@@ -32,7 +32,9 @@ describe('Presentation: McpServerStatus (SPEC-06-03)', () => {
     expect(screen.getByText('releases://active')).toBeDefined();
     expect(screen.getByText('metrics://summary/latest')).toBeDefined();
 
-    expect(screen.getByText('Herramientas Agénticas (3)')).toBeDefined();
+    expect(screen.getByText('Herramientas Agénticas (5)')).toBeDefined();
+    expect(screen.getByText('mcp_crear_artista')).toBeDefined();
+    expect(screen.getByText('mcp_listar_artistas')).toBeDefined();
     expect(screen.getByText('mcp_crear_tarea')).toBeDefined();
     expect(screen.getByText('mcp_aprobar_entregable')).toBeDefined();
     expect(screen.getByText('mcp_consultar_metricas')).toBeDefined();

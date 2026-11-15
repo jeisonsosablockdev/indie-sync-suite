@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "task_id": "EPIC-06",
-  "branch": "epic/jaymusicmachine-EPIC-06-external-connectivity-artist-portal-mcp-hardening",
+  "task_id": "ISS-007",
+  "branch": "feature/jaymusicmachine-ISS-007-mcp-standalone-server-artist-integration",
   "current_phase": "PHASE_8_HUMAN_MERGE_APPROVED",
   "phases": {
     "PHASE_1_BOOTSTRAP": { "completed": true },
