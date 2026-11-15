@@ -74,6 +74,9 @@ Este Pull Request implementa el **Servidor MCP Stdio Autónomo & Herramientas de
    - Configuración en \`.mcp.json\` y \`~/.gemini/antigravity/mcp_config.json\`.
    - Eliminación de la dependencia no utilizada \`@modelcontextprotocol/server\` en \`package.json\`.
 
+### 🛡️ Feature-Flag Strategy:
+- **Feature-Flag Strategy**: Los módulos y herramientas del servidor MCP stdio operan de manera desacoplada y aditiva, permitiendo la activación selectiva de clientes MCP (Antigravity, Cursor, Claude Desktop) mediante configuración stdio sin alterar los flujos existentes de la aplicación web.
+
 ## Test Plan
 - Unit & Integration tests: 105 test suites pasando al 100% (556 tests totales).
 - Harness tests: 10 suites de gobernanza pasando al 100% (48 harness tests).
