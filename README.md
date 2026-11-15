@@ -5,7 +5,7 @@ High-performance Next.js 16 and Solana monorepo for Indie Suite (ISS) with 4-Lay
 <!-- DOCS-AUTO:START -->
 ## Documentation Snapshot (Auto-generated)
 
-Updated: 2026-10-25 02:08:46 UTC
+Updated: 2026-11-14 19:00:43 UTC
 
 | Document | Scope | Last Updated | Last Commit |
 | --- | --- | --- | --- |
